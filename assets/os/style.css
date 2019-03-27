@@ -1,0 +1,46 @@
+li a i {
+    margin-right: 4px;
+}
+h3 i {
+    margin-right: 4px;
+}
+.info-me{
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+}
+.caraousel-text{
+    font-size: 20px;
+    font-weight: normal;
+    bottom: 0;
+    width: 100%;
+    padding: 0;
+    background: #404244;
+    border-radius: 5px;
+}
+/* chart */
+    .chart {
+        position: relative;
+        width: 110px;
+        height: 110px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+    .chart, .percent {
+        display: inline-block;
+    }
+    .percent {
+        line-height: 110px;
+        z-index: 2;
+        font-size: 18px;
+    }
+    .chart canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    audio, canvas, progress, video {
+        display: inline-block;
+        vertical-align: baseline;
+    }
+/* eot */
