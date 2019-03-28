@@ -1,60 +1,82 @@
+<?php
+	ob_start('ob_gzhandler');
+	ob_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v3.12.1, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="assets/images/logo-icon.png" type="image/x-icon">
-  <meta name="description" content="Portofolio - Ogi Setiawan">
-  <title>Ogi Setiawan | Web Personal</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="generator" content="Mobirise v3.12.1, mobirise.com">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="assets/images/logo-icon.png" type="image/x-icon">
+	<meta name="description" content="Portofolio - Ogi Setiawan">
+	<title>Ogi Setiawan | Web Personal</title>
 
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap-material-design-font/css/material.min.css">
-  <link rel="stylesheet" href="assets/et-line-font-plugin/style.min.css">
-  <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
-  <link rel="stylesheet" href="assets/mobirise-gallery/style.css">
-  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="stylesheet" href="assets/os/style.min.css" type="text/css">
+	<!-- CSS -->
+	<link rel="stylesheet" async href="assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" async href="assets/bootstrap-material-design-font/css/material.min.css">
+	<link rel="stylesheet" href="assets/et-line-font-plugin/style.min.css">
+	<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/tether/tether.min.css">
+	<link rel="stylesheet" href="assets/dropdown/css/style.css">
+	<link rel="stylesheet" href="assets/animate.css/animate.min.css">
+	<link rel="stylesheet" href="assets/mobirise-gallery/style.css">
+	<link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+	<link rel="stylesheet" async href="assets/theme/css/style.css">
+	<link rel="stylesheet" href="assets/os/style.min.css" type="text/css">
+
+	<!-- JS -->
+	<script async src="assets/web/assets/jquery/jquery.min.js"></script>
+	<script defer src="assets/tether/tether.min.js"></script>
+	<script defer src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<!-- <script src="assets/smooth-scroll/smooth-scroll.min.js"></script> -->
+	<script defer src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+	<!-- <script src="assets/viewport-checker/jquery.viewportchecker.js"></script> -->
+	<script async src="assets/jarallax/jarallax.min.js"></script>
+	<script defer src="assets/masonry/masonry.pkgd.min.js"></script>
+	<script defer src="assets/imagesloaded/imagesloaded.pkgd.min.js"></script>
+	<script defer src="assets/bootstrap-carousel-swipe/bootstrap-carousel-swipe.min.js"></script>
+	<script defer src="assets/mobirise-gallery/player.min.js"></script>
+	<script defer src="assets/mobirise-gallery/script.min.js"></script>
+	<!-- <script defer src="assets/os/jquery.easypiechart.min.js"></script> -->
+	<script defer src="assets/theme/js/script.min.js"></script>
+	<script async src="assets/os/custom.min.js"></script>
 </head>
 <body>
-<!-- menu -->
-	<section id="menu-0">
-		<nav class="navbar navbar-dropdown navbar-fixed-top">
-			<div class="container">
-				<div class="mbr-table">
-					<div class="mbr-table-cell">
-						<div class="navbar-brand">
-							<a href="" class="navbar-logo"><img src="assets/images/logo-menu.png"></a>
-							<a class="navbar-caption" href="">Ogi Setiawan</a>
+	<!-- menu -->
+		<section id="menu-0">
+			<nav class="navbar navbar-dropdown navbar-fixed-top">
+				<div class="container">
+					<div class="mbr-table">
+						<div class="mbr-table-cell">
+							<div class="navbar-brand">
+								<a href="" class="navbar-logo"><img src="assets/images/logo-menu.png"></a>
+								<a class="navbar-caption" href="">Ogi Setiawan</a>
+							</div>
+						</div>
+						<div class="mbr-table-cell">
+							<button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+								<div class="hamburger-icon"></div>
+							</button>
+
+							<ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar">
+								<li class="nav-item"><a class="nav-link link" href="index.html#ogisetiawan-home"><i class="fa fa-home"></i>HOME</a></li>
+								<li class="nav-item"><a class="nav-link link" href="index.html#features7-w"><i class="fa fa-user"></i>ABOUT</a></li>
+								<li class="nav-item"><a class="nav-link link" href="index.html#gallery4-r"><i class="fa fa-puzzle-piece"></i>PORTOFOLIO</a></li>
+								<li class="nav-item"><a class="nav-link link" href="index.html#ogisetiwan-skill"><i class="fa fa-gamepad"></i>SKIlLS</a></li>
+								<li class="nav-item"><a class="nav-link link" href="index.html#form1-o"><i class="fa fa-comments-o"></i>CONTACT</a></li>
+							</ul>
+
+							<button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+								<div class="close-icon"></div>
+							</button>
 						</div>
 					</div>
-					<div class="mbr-table-cell">
-						<button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-							<div class="hamburger-icon"></div>
-						</button>
-
-						<ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar">
-							<li class="nav-item"><a class="nav-link link" href="index.html#ogisetiawan-home"><i class="fa fa-home"></i>HOME</a></li>
-							<li class="nav-item"><a class="nav-link link" href="index.html#features7-w"><i class="fa fa-user"></i>ABOUT</a></li>
-							<li class="nav-item"><a class="nav-link link" href="index.html#gallery4-r"><i class="fa fa-puzzle-piece"></i>PORTOFOLIO</a></li>
-							<li class="nav-item"><a class="nav-link link" href="index.html#ogisetiwan-skill"><i class="fa fa-gamepad"></i>SKIlLS</a></li>
-							<li class="nav-item"><a class="nav-link link" href="index.html#form1-o"><i class="fa fa-comments-o"></i>CONTACT</a></li>
-						</ul>
-
-						<button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-							<div class="close-icon"></div>
-						</button>
-					</div>
 				</div>
-			</div>
-		</nav>
-	</section>
-<!-- menu -->
+			</nav>
+		</section>
+	<!-- menu -->
 
 <!-- home -->
 	<section class="engine"><a rel="external" href="https://mobirise.com">Web Page Builder</a></section><section class="mbr-section mbr-section-hero mbr-section-full mbr-parallax-background mbr-section-with-arrow mbr-after-navbar" id="ogisetiawan-home" style="background-image: url(assets/images/ogi-2000x1798.jpg);">
@@ -63,7 +85,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="mbr-section col-md-10 col-md-offset-1 text-xs-center">
-						<h1 class="mbr-section-title display-1">Hello there!,<br>I'm Ogi Setiawan :)</h1>
+						<h1 class="mbr-section-title display-1">Hello there!,</h1>
+						<h1 class="mbr-section-title display-1" id="writer">I'm Ogi Setiawan :)</h1>
 						<!-- <p class="mbr-section-lead lead">I'm Web Programmer</p> -->
 						<div class="mbr-section-btn"> <a class="btn btn-lg btn-primary-outline btn-primary" target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to=ogisetiawan21@gmail.com">HIRE ME</a></div>
 					</div>
@@ -513,25 +536,24 @@
 		</div>
 	</footer>
 <!-- follow us -->
-
-  <script src="assets/web/assets/jquery/jquery.min.js"></script>
-  <script src="assets/tether/tether.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <!-- <script src="assets/smooth-scroll/smooth-scroll.min.js"></script> -->
-  <script src="assets/dropdown/js/script.min.js"></script>
-  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
-  <!-- <script src="assets/viewport-checker/jquery.viewportchecker.js"></script> -->
-  <script src="assets/jarallax/jarallax.min.js"></script>
-  <script src="assets/masonry/masonry.pkgd.min.js"></script>
-  <script src="assets/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/bootstrap-carousel-swipe/bootstrap-carousel-swipe.min.js"></script>
-  <script src="assets/mobirise-gallery/player.min.js"></script>
-  <script src="assets/mobirise-gallery/script.min.js"></script>
-  <script src="assets/os/jquery.easypiechart.min.js"></script>
-  <script src="assets/theme/js/script.min.js"></script>
-  <script src="assets/os/custom.min.js"></script>
-
-  <input name="animation" type="hidden">
-   <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon"></i></a></div>
-  </body>
+		<input name="animation" type="hidden">
+		<div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon"></i></a></div>
+	</body>
 </html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/1.0.0/typewriter.js"></script>
+<script>
+    var app = document.getElementById('writer');
+    var typewriter = new Typewriter(writer, {
+        loop: true
+	});
+	// Hello there!,<br>I'm Ogi Setiawan :
+    typewriter.typeString('Im, Ogi Setiawan!')
+        .pauseFor(2500)
+        .deleteChars(13)
+        .typeString('Web Developer!')
+		.pauseFor(2500)
+		.deleteAll()
+		.typeString('Enjoy My Site :)')
+        .start();
+</script>
