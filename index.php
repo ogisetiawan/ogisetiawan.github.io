@@ -521,7 +521,6 @@
 			</div>
 		</section>
 	<!-- contact -->
-
 	<!-- follow us -->
 		<section class="mbr-section mbr-section-md-padding" id="social-buttons4-5" style="background-color: rgb(50, 50, 50); padding-top: 30px; padding-bottom: 30px;">
 			<div class="container">
@@ -562,7 +561,6 @@
 			</div>
 		</footer>
 	<!-- follow us -->
-
 		<input name="animation" type="hidden">
 		<div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon"></i></a></div>
 	</body>
