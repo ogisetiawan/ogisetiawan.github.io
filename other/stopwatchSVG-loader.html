@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Site made with Mobirise Website Builder v4.11.6, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="assets/images/logo-icon.png" type="image/x-icon">
+	<meta name="description" content="Portofolio - Ogi Setiawan">
+	<title>Ogi Setiawan | Web Portofolio</title>
+
+    <!-- @MAIN-CSS -->
+    <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+    <!-- @MAIN-CSS -->
+
+<style>
+  body {
+    background-color: rgb(79, 73, 67);
+    overflow: hidden;
+    font-family: "Oswald", sans-serif;
+  }
+
+  body,
+  html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
+  }
+
+  svg {
+    width: 70%;
+    height: 70%;
+    cursor: pointer;
+    visibility: hidden;
+  }
+
+  text {
+    text-anchor: middle;
+    fill: #c0a375;
+    font-size: 50px;
+    letter-spacing: 0px;
+  }
+</style>
+
+<div class="container">
+  <svg
+    class="stop-watch-svg"
+    version="1.1"
+    width="600px"
+    height="600px"
+    viewBox="0 0 600 600"
+    text-rendering="auto">
+    <defs></defs>
+    <g>
+      <g class="centerGroup">
+        <circle
+          class="center"
+          fill="none"
+          stroke="#c0a375"
+          stroke-width="50"
+          stroke-miterlimit="10"
+          cx="300"
+          cy="300"
+          r="25"/>
+        <circle
+          fill="none"
+          stroke="#c0a375"
+          stroke-width="20"
+          stroke-miterlimit="10"
+          cx="300"
+          cy="300"
+          r="79.2"/>
+      </g>
+      <polygon
+        class="post"
+        fill="#c0a375"
+        points="330.5,183 314.1,183.1 314,195 285,195 285,183.2 269.5,183 269.5,153 330.5,153 "/>
+      <rect
+        class="button"
+        x="366"
+        y="208.2"
+        fill="#c0a375"
+        width="31.3"
+        height="20.6"/>
+    </g>
+    <text x="50%" y="469">LOADING</text>
+  </svg>
+</div>
+<!-- @ MAIN JS -->
+<!-- @ MAIN JS -->
+<!-- @ PLUGIN JS -->
+<!-- <script src="assets/os/svg-loader.js"></script> -->
+<!-- <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/DrawSVGPlugin.js"></script> -->
+<!-- <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/DrawSVGPlugin.js?r=12"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrambleTextPlugin.min.js"></script>
+<!-- @ PLUGIN JS -->
+<script>
+  var container = document.querySelector(".container");
+  var center = document.querySelector(".center");
+  var stopWatchSVG = document.querySelector(".stop-watch-svg");
+  var centerGroup = document.querySelector(".centerGroup");
+  var button = document.querySelector(".button");
+  var post = document.querySelector(".post");
+  TweenMax.set([container, "svg"], {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    xPercent: -50,
+    yPercent: -50
+  });
+  //I use this rotation method (as opposed to rotation:-90) as it overcomes a bug in Safari where the origin point is at 3 oclock and should be 12 oclock
+  TweenMax.set(centerGroup, {
+    attr: {
+      transform: "rotate(-90, 300, 300)"
+    }
+  });
+
+  TweenMax.set(button, {
+    rotation: 45,
+    transformOrigin: "50% 50%"
+  });
+  var tl = new TimelineMax({
+    repeat: -1,
+    paused: true
+  });
+  tl.timeScale(1.2);
+
+  tl.from(center, 1, {
+    drawSVG: "0% 0%",
+    ease: Linear.easeNone
+  })
+    .to(
+      button,
+      0.1,
+      {
+        attr: {
+          y: "+=10",
+          height: "-=10"
+        },
+        repeat: 1,
+        yoyo: true,
+        ease: Power1.easeIn
+      },
+      "-=0.1"
+    )
+    .to(
+      center,
+      1,
+      {
+        drawSVG: "100% 100%",
+        ease: Linear.easeNone
+      },
+      "-=0.1"
+    );
+
+  //just the intro animation
+  var seq = new TimelineMax({
+    delay: 0.1,
+    onComplete: function() {
+      tl.play();
+    }
+  });
+  seq.timeScale(0.75);
+  seq
+    .from(stopWatchSVG, 1, {
+      scale: 0,
+      rotation: -90,
+      transformOrigin: "50% 50%",
+      ease: Power4.easeInOut
+    })
+    .from(
+      [post],
+      1,
+      {
+        rotation: -180,
+        transformOrigin: "50% 350%",
+        ease: Back.easeInOut.config(0.8)
+      },
+      "-=1"
+    )
+
+    .from(
+      "text",
+      0.4,
+      {
+        alpha: 0,
+        attr: {
+          y: "-=40"
+        },
+        //delay:0.21,
+        ease: Bounce.easeOut
+      },
+      "-=0.2"
+    );
+
+  container.addEventListener("click", function(e) {
+    tl.pause();
+    tl.seek(0);
+    seq.restart();
+  });
+
+  TweenMax.set("svg", {
+    visibility: "visible"
+  });
+</script>
+</body>
+</html>
