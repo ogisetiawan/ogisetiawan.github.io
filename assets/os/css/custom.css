@@ -1,5 +1,7 @@
 section#dashboard{clip-path:polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 12vw));}
 .mbr-arrow{left:91%;}
+.os-color-header{opacity: 0.5;background-color: rgb(79, 73, 67);}
+.os-fs-15{font-size:15px;}
 .title{border-left:5px solid #efefef !important;letter-spacing:-2px;text-transform:uppercase;font-weight:400;}
 .btn-primary-outline:hover,
 .btn-primary-outline:focus,
