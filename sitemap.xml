@@ -8,6 +8,6 @@ http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
   <loc>https://ogisetiawan.github.io/</loc>
   <changefreq>hourly</changefreq>
-  <priority>1</priority>
+  <priority>1.00</priority>
 </url>
 </urlset>
