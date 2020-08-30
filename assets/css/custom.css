@@ -1,0 +1,77 @@
+.card-started .profile .image img {
+    opacity: 0.76;
+}
+
+.skills-list.circles ul li {
+    padding-bottom: 50px;
+}
+
+.skills-list.circles ul li .names {
+    position: absolute;
+    top: 145px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    /* background: #a7d129; */
+}
+
+i.fa.fa-circle.label {
+    margin-right: .4rem !important;
+    font-size: 8px;
+}
+
+.level {
+    position: absolute;
+    top: 145px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+}
+
+.expert {
+    color: #d72323
+}
+
+.proficient {
+    color: #0a91ab
+}
+
+.competent {
+    color: #ffd700
+}
+
+.advance {
+    color: #ede68a
+}
+
+span.level-list {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+strong.contact-info {
+    font-size: 12px !important;
+}
+
+.blink {
+    animation: blink-animation 1s steps(5, start) infinite;
+    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+
+a:hover.link {
+    text-decoration: underline;
+    cursor: pointer;
+}
