@@ -2,7 +2,7 @@
  * @Author: ogisetiawan21@gmail.com 
  * @Date: 2022-02-15 21:49:50 
  * @Last Modified by: ogisetiawan21@gmail.com
- * @Last Modified time: 2022-02-15 22:26:58
+ * @Last Modified time: 2022-05-23 17:08:31
  */
 
 // ~ InitWriter
@@ -39,6 +39,6 @@ function getAge(dateString) {
 const age = document.getElementById('age');
 const exp = document.getElementById('exp');
 const born = "1995/10/16";
-const startExp = "2014/07/19";
+const startExp = "2016/11/19";
 age.innerText = getAge(born) + ' years';
 exp.innerText = getAge(startExp) + ' years';
