@@ -1,0 +1,542 @@
+{
+  "profile": {
+    "name": "Ogi Setiawan",
+    "title": "Web Developer",
+    "roles": [
+      "Web Developer",
+      "Front-end Developer",
+      "Back-end Developer",
+      "Freelancer"
+    ],
+    "tagline": "Web Developer producing high quality responsive websites and exceptional user experience.",
+    "bio": "Hi there, Ogi here! I'm a Hard-working web developer with a knack for creating elegant solutions for your business. Having 5+ years experience in website development. I love to talk you about our unique.",
+    "birthDate": "1995-10-16",
+    "experienceStartDate": "2016-11-19",
+    "education": "Bachelor's Degree",
+    "freelanceAvailable": true,
+    "location": "Tangsel - Indonesia",
+    "images": {
+      "profile": "assets/images/ogi-profile.jpg",
+      "cover": "assets/images/ogi-14-2000x1798.jpeg",
+      "logoIcon": "assets/images/logo-icon.png"
+    }
+  },
+  "contact": {
+    "address": "Tangsel - Indonesia",
+    "email": "ogisetiawan21@gmail.com",
+    "phone": "+62 899 809 1064",
+    "whatsapp": "628998091065",
+    "status": "Available"
+  },
+  "social": [
+    {
+      "platform": "LinkedIn",
+      "icon": "linkedin",
+      "url": "https://www.linkedin.com/in/ogisetiawan"
+    },
+    {
+      "platform": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/ogisetiawan"
+    },
+    {
+      "platform": "Twitter",
+      "icon": "twitter",
+      "url": "https://twitter.com/ogisetiawann"
+    },
+    {
+      "platform": "Stack Overflow",
+      "icon": "stack-overflow",
+      "url": "https://stackoverflow.com/users/8886506/ogi-setiawan"
+    },
+    {
+      "platform": "DEV",
+      "icon": "dev",
+      "url": "https://dev.to/ogisetiawan"
+    }
+  ],
+  "services": [
+    {
+      "name": "Web Development",
+      "icon": "code",
+      "description": "Build a web-sites modern and mobile-friendly such as single static page and complex web page that will reach your marketing."
+    },
+    {
+      "name": "Search Engine Optimize (SEO)",
+      "icon": "world",
+      "description": "Process of improving the quality and quantity of website traffic to a website from search engines."
+    },
+    {
+      "name": "Web Design",
+      "icon": "desktop",
+      "description": "Design of user interfaces for focus on maximizing and user experience for Digital Products."
+    },
+    {
+      "name": "Graphic Design",
+      "icon": "paintbrush",
+      "description": "Create visual content to communicate messages for promote and sell products to develop a brand indentity."
+    }
+  ],
+  "interests": [
+    "Programming",
+    "Robotics",
+    "Games",
+    "Design"
+  ],
+  "experience": [
+    {
+      "role": "Web Developer Specialist",
+      "company": "Maha Chemicals (Asia) Pte Ltd",
+      "startDate": "2020",
+      "endDate": "Present",
+      "current": true,
+      "responsibilities": [
+        "Responsible full stack web development for multiple departments",
+        "Devised various custom features for requirments business proccess",
+        "Successfully Integration custom web apps with internal website, increase process business each department by 70%"
+      ]
+    },
+    {
+      "role": "Web Developer",
+      "company": "PT Kaldu Sari Nabati",
+      "startDate": "2018",
+      "endDate": "2020",
+      "current": false,
+      "responsibilities": [
+        "Full stack web developer responsible for end-to-end web app development",
+        "Analyze user requirments.",
+        "Optimize website performance using latest technology."
+      ]
+    },
+    {
+      "role": "Web Programmer & Trainner",
+      "company": "Incore System Solution",
+      "startDate": "2016",
+      "endDate": "2018",
+      "current": false,
+      "responsibilities": [
+        "Maintenance and optimize a webpage content management system.",
+        "Deliver training course to users on Inventory Apps",
+        "Supported, Diagnosed & Troubleshooting IT Device Peripheral"
+      ]
+    },
+    {
+      "role": "Trainer Robotics",
+      "company": "Racer Robotics",
+      "startDate": "2014",
+      "endDate": "2016",
+      "current": false,
+      "responsibilities": [
+        "Teach and sharing to people espesially for students about automation robotics such as software and hardware robotic.",
+        "Resoponsible as Head of Robotics Competitions"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor's Degree",
+      "field": "Computer Science",
+      "institution": "University Pamulang",
+      "startDate": "2013",
+      "endDate": "2017",
+      "description": "Bachelor's Degree in Computer Science at University Pamulang."
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Vuejs",
+      "issuer": "Bobastudio",
+      "date": "2020",
+      "coursework": "Fundamental Vuejs"
+    },
+    {
+      "name": "Fundamental Frontend Web",
+      "issuer": "Dicoding Indonesia",
+      "date": "2021 - 2024",
+      "coursework": "DOM, Web Storage, Event Handling and etc."
+    },
+    {
+      "name": "Cloud Practitioner Essential",
+      "issuer": "Dicoding Indonesia",
+      "date": "2021 - 2024",
+      "coursework": "Amazon Web Service, Cloud Computing, Networking and Fundamental AWS Certified Cloud Practitioner"
+    },
+    {
+      "name": "Fundamental Web Programming",
+      "issuer": "Dicoding Indonesia",
+      "date": "2020 - 2023",
+      "coursework": "HTML5, CSS, Layout and Flexbox, Javascript - DOM and Web Storage"
+    }
+  ],
+  "skills": {
+    "programming": [
+      { "name": "HTML5 / CSS3", "level": "Expert", "percentage": 90 },
+      { "name": "PHP", "level": "Expert", "percentage": 95 },
+      { "name": "Javascript", "level": "Proficient", "percentage": 85 },
+      { "name": "Jquery", "level": "Proficient", "percentage": 90 },
+      { "name": "Laravel Framework", "level": "Proficient", "percentage": 80 },
+      { "name": "Codeigniter", "level": "Proficient", "percentage": 85 },
+      { "name": "MySQL", "level": "Proficient", "percentage": 80 },
+      { "name": "C++", "level": "Advance", "percentage": 60 },
+      { "name": "Java", "level": "Advance", "percentage": 55 },
+      { "name": "React JS", "level": "Beginner", "percentage": 40 }
+    ],
+    "hardSkills": [
+      { "name": "Web Framework", "percentage": 90 },
+      { "name": "Wireframes / Mockup", "percentage": 80 },
+      { "name": "UI/UX", "percentage": 75 },
+      { "name": "Restfull APIs", "percentage": 80 },
+      { "name": "Git Versioning Control", "percentage": 80 },
+      { "name": "SQL Queries", "percentage": 80 },
+      { "name": "Debugging", "percentage": 80 },
+      { "name": "CI/CD ( Deployment )", "percentage": 80 },
+      { "name": "Cloud Computing", "percentage": 65 },
+      { "name": "Search Engine Optimize", "percentage": 75 },
+      { "name": "Wordpress", "percentage": 70 },
+      { "name": "Photoshop & Adobe Iluslator", "percentage": 75 }
+    ],
+    "softSkills": [
+      "Proactive",
+      "Visual Thinking",
+      "Problem Solving",
+      "Organization Skills",
+      "Collaboration",
+      "Creativity",
+      "Communication",
+      "Leadership",
+      "Enthusiasm"
+    ],
+    "languages": [
+      { "name": "English", "percentage": 70 },
+      { "name": "Indonesia", "percentage": 90 }
+    ]
+  },
+  "projects": [
+    {
+      "id": "web-monitoring-sales",
+      "title": "Web Monitoring Sales ( Area and Depo )",
+      "shortTitle": "Web Monitoring Sales",
+      "category": "Web Application",
+      "image": "assets/images/portofolio/web-monitoring-sales.png",
+      "description": "Website Monitoring Sales Transactions for Promo, LBP, Kasbank and Inventory modules each Group Region, Region and Area. Connected with third-party applications Syclla and SAP Business World with real-time synchronization.",
+      "features": [
+        "Exporting Document XLS, Word and PDF",
+        "Realtime monitoring",
+        "Dynamic Dropdown-list",
+        "Server-side Rendering",
+        "Responsive and Clean Design",
+        "Consolidatation data SAP"
+      ],
+      "technologies": [
+        "Codeigniter 3 HMVC",
+        "Bootstrap 4",
+        "Jquery",
+        "AJAX",
+        "Javascript",
+        "Datatables",
+        "REST API",
+        "PHP"
+      ],
+      "url": "https://pinusmerahabadi.co.id/portal/monitoring/"
+    },
+    {
+      "id": "web-kpi",
+      "title": "Web Key Performace Individually (KPI)",
+      "shortTitle": "Web KPI",
+      "category": "Web Application",
+      "image": "assets/images/portofolio/web-kpi.png",
+      "description": "KPI Website to calculate employee performance from various departments of Sales, IT, Finance & Accounting, Human Capital & etc.",
+      "features": [
+        "Uploading data Master",
+        "System Approval",
+        "Email Notification"
+      ],
+      "technologies": [
+        "PHP",
+        "Codeigniter 3",
+        "Ajax",
+        "PHPExcel",
+        "Javascript",
+        "Bootstrap 4",
+        "Datepicker"
+      ],
+      "url": "https://pinusmerahabadi.co.id/pma_dev/kpi/"
+    },
+    {
+      "id": "web-elearning",
+      "title": "Web Elearning",
+      "shortTitle": "Web Elearning",
+      "category": "Web Application",
+      "image": "assets/images/portofolio/elearning.png",
+      "description": "E-learning Website is learning media for each employee that is accessed online such as information about the company, organizational structure, question and answer forums, quizzes and others.",
+      "features": [
+        "Quiz with time session",
+        "Forum question-answer",
+        "Upload question for user or departement"
+      ],
+      "technologies": [
+        "PHP 5 ( OOP )",
+        "Bootstrap 3",
+        "Javascript"
+      ],
+      "url": "https://pinusmerahabadi.co.id/portal/"
+    },
+    {
+      "id": "e-redpine",
+      "title": "E-Redpine",
+      "shortTitle": "E-Redpine",
+      "category": "Web Application",
+      "image": "assets/images/portofolio/redpine.png",
+      "description": "A website that can provide reports, promo transactions, setting the number of promos for each area.",
+      "features": [
+        "Approval System",
+        "Upload data"
+      ],
+      "technologies": [
+        "PHP 5 ( OOP )",
+        "Bootstrap 3",
+        "Javascript"
+      ],
+      "url": "https://pinusmerahabadi.co.id/portal/"
+    },
+    {
+      "id": "dashboard-monitoring-faktur",
+      "title": "Dashboard Monitoring Faktur",
+      "shortTitle": "Dashboard Monitoring Faktur",
+      "category": "Web Application",
+      "image": "assets/images/portofolio/web-monitoring-retur.png",
+      "description": "A website that is integrated with the SAP-Business Warehouse that can provide actual information regarding the number of invoices sent from salesmen to stores in every area throughout Indonesia.",
+      "features": [
+        "Realtime Dashboard",
+        "Syncronization SAP-BW",
+        "Downloading Data to PDF file",
+        "Responsize and Clean Design UI",
+        "Dyanimic Dropdown list",
+        "Server side rendering"
+      ],
+      "technologies": [
+        "Codeigniter 3",
+        "Bootstrap 4",
+        "OWL Carousel",
+        "HTML5 & CSS3",
+        "Javascript",
+        "AJAX",
+        "Jquery"
+      ],
+      "url": "https://pinusmerahabadi.co.id/monitoringfaktur/"
+    },
+    {
+      "id": "web-rnd",
+      "title": "Web RnD",
+      "shortTitle": "Web RnD",
+      "category": "Web Application",
+      "image": "assets/images/portofolio/web-rnd.png",
+      "description": "A website that can manage and develop new products or item, so that they can be managed properly from idea formation, detailed formulas to the final packaging.",
+      "features": [
+        "Dynamic Input",
+        "Email Notify",
+        "Approval System"
+      ],
+      "technologies": [
+        "Materialize",
+        "Codeigniter",
+        "PHP",
+        "REST API",
+        "Jquery",
+        "AJAX",
+        "Javascript",
+        "PHP Mailer"
+      ],
+      "url": "https://rndwap.nabatisnack.co.id/"
+    },
+    {
+      "id": "web-faktur-pajak",
+      "title": "Web Faktur Pajak",
+      "shortTitle": "Web Faktur Pajak",
+      "category": "Web Application",
+      "image": "assets/images/portofolio/web-faktur-pajak.png",
+      "description": "Website Approval and Information that can exchange data between areas / depots with the Head-Office regarding sales tax information for each product.",
+      "features": [
+        "Exporting Document XLS & PDF",
+        "Email Notification",
+        "Uploading file Document, Image etc"
+      ],
+      "technologies": [
+        "Codeigniter 3 HMVC",
+        "PHP",
+        "Javascript",
+        "AJAX",
+        "Bootstrap"
+      ],
+      "url": "https://pinusmerahabadi.co.id/pmafaktur/"
+    },
+    {
+      "id": "web-sales-dashboard",
+      "title": "Web Sales Dashboard",
+      "shortTitle": "Web Sales Dashboard",
+      "category": "Web Application",
+      "image": "assets/images/portofolio/web-sales-dashboard.png",
+      "description": "Website Dashboard Sales for monitoring a sales and budget of product each sales person.",
+      "features": [
+        "Realtime montiroing Dashboard",
+        "REST Client API",
+        "Dynmic Filtering"
+      ],
+      "technologies": [
+        "HTML5 & CSS3",
+        "Bootstrap 4",
+        "PHP 7",
+        "Jquery",
+        "AJAX",
+        "Javascript",
+        "MariaDB"
+      ],
+      "url": null
+    },
+    {
+      "id": "web-stock-position",
+      "title": "Web Stock Position",
+      "shortTitle": "Web Stock Position",
+      "category": "Web Application",
+      "image": "assets/images/portofolio/web-stockposition.png",
+      "description": "A website that can provide information regarding the amount of stock, aging stock, free stock, and incoming stock each warehouse.",
+      "features": [
+        "Exporting data to XLS, Word, PDF",
+        "RESTFull API",
+        "Inline Editing Remark",
+        "Server-side Rendering"
+      ],
+      "technologies": [
+        "HTML5 & CSS3",
+        "Bootstrap 4",
+        "PHP 7",
+        "Jquery",
+        "AJAX",
+        "Javascript",
+        "MariaDB",
+        "SAP - B1"
+      ],
+      "url": null
+    },
+    {
+      "id": "e-invoice-soa",
+      "title": "E-invoice & SOA",
+      "shortTitle": "E-invoice & SOA",
+      "category": "Web Application",
+      "image": "assets/images/portofolio/web-invoice_soa.png",
+      "description": "A website for Accessibility of sending SOA report with Internal Web.",
+      "features": [
+        "PDF Preview",
+        "Mailer System",
+        "Mutli sent out Invoice"
+      ],
+      "technologies": [
+        "Bitrix24",
+        "Bootstrap",
+        "Javascript",
+        "AJAX",
+        "Jquery",
+        "PHPMailer",
+        "Dompdf",
+        "Mysql"
+      ],
+      "url": null
+    },
+    {
+      "id": "web-kor",
+      "title": "Web KOR",
+      "shortTitle": "Web KOR",
+      "category": "Web Application",
+      "image": "assets/images/portofolio/web-kor-maha.png",
+      "description": "Website Performace Individual to calculate employee performance espasially for Sales Person each Country.",
+      "features": [
+        "Inline Editing",
+        "Clean & Responsive Design UI",
+        "Interactive UX",
+        "Intergreated SAP-B1",
+        "Single Login"
+      ],
+      "technologies": [
+        "Laravel 8",
+        "Laravel 6",
+        "Jquery UI",
+        "Javascript",
+        "HTML5 & CSS3",
+        "Jquery",
+        "Materialize CSS Framework",
+        "Rest-full API",
+        "Mysql"
+      ],
+      "url": null
+    },
+    {
+      "id": "web-purchase-request",
+      "title": "Web Purchase Request",
+      "shortTitle": "Web Purchase Request",
+      "category": "Web Application",
+      "image": "assets/images/portofolio/web-pr.png",
+      "description": "A website that can help to monitor a Purchase from supplier and make it easier & maintanable for approval processing.",
+      "features": [
+        "Notify Email & Bitrix24 Platform",
+        "Multiple Adding Product/Item",
+        "Sync data with SAP-B1",
+        "Searching dropdown list"
+      ],
+      "technologies": [
+        "Codeigniter 3",
+        "Bootstrap 4",
+        "PHPMailer",
+        "Rest-full API",
+        "Javascript"
+      ],
+      "url": null
+    },
+    {
+      "id": "hitsrecords",
+      "title": "Hitsrecords",
+      "shortTitle": "Hitsrecords",
+      "category": "Web Application",
+      "image": "assets/images/portofolio/web-hitsrecords.png",
+      "description": "Website Content Management System for information on a music label Hitsrecords ( Genre POP ) & SwaraBintang ( Genre Dangdut ) member of MNC Group.",
+      "features": [
+        "Clean and Responsive Design",
+        "Server side rendering",
+        "Facebook Comments",
+        "Multi Level Login"
+      ],
+      "technologies": [
+        "Laravel 8",
+        "Bootstrap",
+        "Javascript",
+        "AJAX",
+        "Jquery",
+        "PJAX",
+        "OWL Carousel"
+      ],
+      "url": "https://jalandong.id/hitsrecords/"
+    },
+    {
+      "id": "starhits",
+      "title": "Starhits.id",
+      "shortTitle": "Starhits.id",
+      "category": "Web Application",
+      "image": "assets/images/portofolio/web-starhits.png",
+      "description": "Web portal and content management system.",
+      "features": [
+        "Clean and Responsive Design",
+        "Server side rendering",
+        "Facebook Comments",
+        "Multi Level Login"
+      ],
+      "technologies": [
+        "Laravel 5",
+        "Bootstrap",
+        "Javascript",
+        "AJAX",
+        "Mysql",
+        "OWL Carousel"
+      ],
+      "url": "https://starhits.id"
+    }
+  ]
+}
