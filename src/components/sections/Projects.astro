@@ -1,0 +1,114 @@
+---
+import { portfolioData as portfolio } from "../../data/portfolio";
+import ProjectCard from "../ui/ProjectCard.astro";
+
+// Map data categories to filter slugs used by the buttons
+const categoryMap: Record<string, string> = {
+  "Web Application": "web",
+  "Desktop Application": "desktop",
+  Robotics: "robotics",
+};
+
+const filters = [
+  { label: "All", value: "all" },
+  { label: "Web App", value: "web" },
+  { label: "Desktop", value: "desktop" },
+  { label: "Robotics", value: "robotics" },
+];
+
+const projects = portfolio.projects.map((project) => ({
+  ...project,
+  slug: categoryMap[project.category] ?? "other",
+}));
+---
+
+<section id="projects" class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+  <div class="mb-12 text-center">
+    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+      Proyek Unggulan
+    </h2>
+  </div>
+
+  <!-- Filter buttons -->
+  <div class="mb-10 flex flex-wrap justify-center gap-3" role="group" aria-label="Filter proyek">
+    {
+      filters.map((filter, i) => (
+        <button
+          type="button"
+          class:list={[
+            "filter-btn rounded-full border px-5 py-2 text-sm font-medium transition-colors",
+            i === 0
+              ? "border-gray-900 bg-gray-900 text-white dark:border-white dark:bg-white dark:text-gray-900"
+              : "border-gray-300 text-gray-600 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800",
+          ]}
+          data-filter={filter.value}
+          aria-pressed={i === 0 ? "true" : "false"}
+        >
+          {filter.label}
+        </button>
+      ))
+    }
+  </div>
+
+  <!-- Project grid -->
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {
+      projects.map((project) => (
+        <div class="project-item" data-category={project.slug}>
+          <ProjectCard
+            title={project.title}
+            description={project.description}
+            image={project.image}
+            tags={project.technologies}
+            demoLink={project.url}
+          />
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  const filterButtons =
+    document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const projectItems =
+    document.querySelectorAll<HTMLElement>(".project-item");
+
+  const activeClasses = [
+    "border-gray-900",
+    "bg-gray-900",
+    "text-white",
+    "dark:border-white",
+    "dark:bg-white",
+    "dark:text-gray-900",
+  ];
+  const inactiveClasses = [
+    "border-gray-300",
+    "text-gray-600",
+    "hover:bg-gray-100",
+    "dark:border-gray-600",
+    "dark:text-gray-300",
+    "dark:hover:bg-gray-800",
+  ];
+
+  function setActive(clicked: HTMLButtonElement) {
+    filterButtons.forEach((btn) => {
+      const isActive = btn === clicked;
+      btn.setAttribute("aria-pressed", String(isActive));
+      btn.classList.remove(...(isActive ? inactiveClasses : activeClasses));
+      btn.classList.add(...(isActive ? activeClasses : inactiveClasses));
+    });
+  }
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter;
+      setActive(btn);
+
+      projectItems.forEach((item) => {
+        const matches = filter === "all" || item.dataset.category === filter;
+        item.classList.toggle("hidden", !matches);
+      });
+    });
+  });
+</script>
