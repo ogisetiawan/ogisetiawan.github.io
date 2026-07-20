@@ -1,0 +1,67 @@
+---
+import { portfolioData as portfolio } from "../../data/portfolio";
+
+const { testimonials } = portfolio;
+
+function initials(name: string): string {
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? "")
+    .join("");
+}
+---
+
+<section id="testimonials" class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+  <div class="mb-12 text-center">
+    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+      Testimonials
+    </h2>
+    <p class="mt-4 text-base text-gray-600 dark:text-gray-400">
+      Feedback from colleagues and clients on working with me.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {
+      testimonials.map((item) => (
+        <blockquote class="flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-800">
+          <svg
+            class="mb-4 h-8 w-8 text-gray-300 dark:text-gray-600"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10H0z" />
+          </svg>
+
+          <p class="flex-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            “{item.quote}”
+          </p>
+
+          <footer class="mt-6 flex items-center gap-3 border-t border-gray-100 pt-5 dark:border-gray-700">
+            <div
+              class="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-gray-900 text-sm font-bold text-white dark:bg-white dark:text-gray-900"
+              aria-hidden="true"
+            >
+              {initials(item.name)}
+            </div>
+            <div class="min-w-0">
+              <cite class="block truncate text-sm font-bold not-italic text-gray-900 dark:text-white">
+                {item.name}
+              </cite>
+              <p class="truncate text-xs text-gray-500 dark:text-gray-400">
+                {item.role} · {item.company}
+              </p>
+              <p class="mt-0.5 truncate text-xs text-gray-400 dark:text-gray-500">
+                {item.relationship}
+              </p>
+            </div>
+          </footer>
+        </blockquote>
+      ))
+    }
+  </div>
+</section>

@@ -5,7 +5,7 @@ const { contact, social } = portfolio;
 
 // WhatsApp deep link (number & prefilled message per request)
 const whatsappUrl =
-  "https://wa.me/628998091065?text=Halo%20Ogi,%20saya%20melihat%20portofolio%20Anda%20dan%20tertarik%20untuk%20berdiskusi...";
+  "https://wa.me/628998091065?text=Hi%20Ogi,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project...";
 
 // Brand icon SVG paths (24x24 viewBox, simple-icons style)
 const socialIcons: Record<string, string> = {
@@ -24,10 +24,10 @@ const socialIcons: Record<string, string> = {
 <section id="contact" class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
   <div class="mb-12 text-center">
     <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-      Hubungi Saya
+      Get in Touch
     </h2>
     <p class="mt-4 text-base text-gray-600 dark:text-gray-400">
-      Punya proyek atau ingin berdiskusi? Kirim pesan lewat form atau WhatsApp.
+      Have a project or want to discuss something? Send a message via the form or WhatsApp.
     </p>
   </div>
 
@@ -35,10 +35,10 @@ const socialIcons: Record<string, string> = {
     <!-- Left: contact info -->
     <div class="flex flex-col">
       <h3 class="text-xl font-bold text-gray-900 dark:text-white">
-        Informasi Kontak
+        Contact Information
       </h3>
       <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-        Silakan hubungi saya melalui detail di bawah ini.
+        Feel free to reach out using the details below.
       </p>
 
       <ul class="mt-8 space-y-6">
@@ -101,7 +101,7 @@ const socialIcons: Record<string, string> = {
             </svg>
           </span>
           <div>
-            <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Lokasi</p>
+            <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Location</p>
             <p class="text-base font-semibold text-gray-900 dark:text-white">
               {contact.address}
             </p>
@@ -112,7 +112,7 @@ const socialIcons: Record<string, string> = {
       <!-- Social links -->
       <div class="mt-8">
         <p class="mb-3 text-sm font-medium text-gray-500 dark:text-gray-400">
-          Temukan saya di
+          Find me on
         </p>
         <ul class="flex items-center gap-3">
           {
@@ -167,7 +167,7 @@ const socialIcons: Record<string, string> = {
     <div
       class="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg sm:p-8 dark:border-gray-800 dark:bg-gray-800"
     >
-      <h3 class="text-xl font-bold text-gray-900 dark:text-white">Kirim Pesan</h3>
+      <h3 class="text-xl font-bold text-gray-900 dark:text-white">Send a Message</h3>
       <form
         action="https://formspree.io/f/xbjnqyqk"
         method="POST"
@@ -178,7 +178,7 @@ const socialIcons: Record<string, string> = {
             for="contact-name"
             class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
           >
-            Nama
+            Name
           </label>
           <input
             type="text"
@@ -186,7 +186,7 @@ const socialIcons: Record<string, string> = {
             name="name"
             required
             autocomplete="name"
-            placeholder="Nama lengkap Anda"
+            placeholder="Your full name"
             class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 dark:border-gray-600 dark:bg-gray-900 dark:text-white dark:placeholder-gray-500"
           />
         </div>
@@ -204,7 +204,7 @@ const socialIcons: Record<string, string> = {
             name="email"
             required
             autocomplete="email"
-            placeholder="email@contoh.com"
+            placeholder="email@example.com"
             class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 dark:border-gray-600 dark:bg-gray-900 dark:text-white dark:placeholder-gray-500"
           />
         </div>
@@ -214,14 +214,14 @@ const socialIcons: Record<string, string> = {
             for="contact-message"
             class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
           >
-            Pesan
+            Message
           </label>
           <textarea
             id="contact-message"
             name="message"
             rows="5"
             required
-            placeholder="Tuliskan pesan Anda..."
+            placeholder="Write your message..."
             class="w-full resize-y rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 dark:border-gray-600 dark:bg-gray-900 dark:text-white dark:placeholder-gray-500"
           ></textarea>
         </div>
@@ -230,7 +230,7 @@ const socialIcons: Record<string, string> = {
           type="submit"
           class="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:w-auto dark:focus-visible:ring-offset-gray-800"
         >
-          Kirim Pesan
+          Send Message
         </button>
       </form>
     </div>

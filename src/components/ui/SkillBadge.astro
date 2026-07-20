@@ -1,13 +1,44 @@
 ---
 interface Props {
   name: string;
+  level?: string;
 }
 
-const { name } = Astro.props;
+const { name, level } = Astro.props;
+
+const levelStyles: Record<string, string> = {
+  Expert:
+    "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300",
+  Proficient:
+    "bg-sky-100 text-sky-800 dark:bg-sky-900/40 dark:text-sky-300",
+  Intermediate:
+    "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300",
+  Advance:
+    "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300",
+  Beginner:
+    "bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300",
+  Native:
+    "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300",
+  Professional:
+    "bg-sky-100 text-sky-800 dark:bg-sky-900/40 dark:text-sky-300",
+};
 ---
 
 <span
-  class="inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-medium text-gray-700 dark:bg-gray-700 dark:text-gray-200"
+  class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3.5 py-1.5 text-sm font-medium text-gray-800 shadow-sm transition-colors hover:border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-600"
 >
   {name}
+  {
+    level && (
+      <span
+        class:list={[
+          "rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide",
+          levelStyles[level] ??
+            "bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300",
+        ]}
+      >
+        {level}
+      </span>
+    )
+  }
 </span>
