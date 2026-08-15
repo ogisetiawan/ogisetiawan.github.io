@@ -1,0 +1,172 @@
+---
+import { portfolioData as portfolio } from "../../data/portfolio";
+
+interface ToolIcon {
+  slug: string;
+  label: string;
+  invertOnDark?: boolean;
+  /** Override when Simple Icons has no brand (e.g. SQL Server) */
+  src?: string;
+}
+
+const DEVICON =
+  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons";
+
+/** Match longer / more specific names first */
+const TOOL_CATALOG: { test: RegExp; icon: ToolIcon }[] = [
+  { test: /laravel/i, icon: { slug: "laravel", label: "Laravel" } },
+  { test: /codeigniter/i, icon: { slug: "codeigniter", label: "CodeIgniter" } },
+  { test: /jquery/i, icon: { slug: "jquery", label: "jQuery" } },
+  { test: /nestjs/i, icon: { slug: "nestjs", label: "NestJS" } },
+  { test: /next\s?js/i, icon: { slug: "nextdotjs", label: "Next.js", invertOnDark: true } },
+  { test: /express/i, icon: { slug: "express", label: "Express.js", invertOnDark: true } },
+  { test: /node/i, icon: { slug: "nodedotjs", label: "Node.js" } },
+  { test: /typescript/i, icon: { slug: "typescript", label: "TypeScript" } },
+  { test: /javascript|es6/i, icon: { slug: "javascript", label: "JavaScript" } },
+  { test: /react/i, icon: { slug: "react", label: "React" } },
+  { test: /postgres/i, icon: { slug: "postgresql", label: "PostgreSQL" } },
+  {
+    test: /sql\s*server|mssql/i,
+    icon: {
+      slug: "microsoftsqlserver",
+      label: "SQL Server",
+      src: `${DEVICON}/microsoftsqlserver/microsoftsqlserver-plain.svg`,
+    },
+  },
+  { test: /\bphp\b/i, icon: { slug: "php", label: "PHP" } },
+  { test: /docker/i, icon: { slug: "docker", label: "Docker" } },
+  { test: /astro/i, icon: { slug: "astro", label: "Astro", invertOnDark: true } },
+  { test: /github/i, icon: { slug: "github", label: "GitHub", invertOnDark: true } },
+  { test: /gitlab/i, icon: { slug: "gitlab", label: "GitLab" } },
+  { test: /tailwind/i, icon: { slug: "tailwindcss", label: "Tailwind CSS" } },
+  { test: /bootstrap/i, icon: { slug: "bootstrap", label: "Bootstrap" } },
+  { test: /html5?/i, icon: { slug: "html5", label: "HTML5" } },
+  { test: /css3?/i, icon: { slug: "css", label: "CSS3" } },
+  { test: /restful|rest\s*api/i, icon: { slug: "swagger", label: "REST API" } },
+  { test: /python/i, icon: { slug: "python", label: "Python" } },
+  {
+    test: /\baws\b|amazon web services/i,
+    icon: {
+      slug: "amazonwebservices",
+      label: "AWS",
+      src: `${DEVICON}/amazonwebservices/amazonwebservices-plain-wordmark.svg`,
+    },
+  },
+  { test: /linux/i, icon: { slug: "linux", label: "Linux" } },
+  { test: /redis/i, icon: { slug: "redis", label: "Redis" } },
+  { test: /notion/i, icon: { slug: "notion", label: "Notion", invertOnDark: true } },
+];
+
+function iconSrc(tool: ToolIcon): string {
+  return tool.src ?? `https://cdn.simpleicons.org/${tool.slug}`;
+}
+
+function toolsFromProgramming(names: string[]): ToolIcon[] {
+  const seen = new Set<string>();
+  const tools: ToolIcon[] = [];
+
+  for (const name of names) {
+    for (const { test, icon } of TOOL_CATALOG) {
+      if (test.test(name) && !seen.has(icon.slug)) {
+        seen.add(icon.slug);
+        tools.push(icon);
+      }
+    }
+  }
+
+  return tools;
+}
+
+const tools = toolsFromProgramming(
+  portfolio.skills.programming.map((skill) => skill.name)
+);
+
+const copies = 2;
+const trackItems = Array.from({ length: copies }, () => tools).flat();
+---
+
+<div
+  class="tech-marquee relative overflow-hidden border-y border-gray-200 bg-gray-50/70 py-5 dark:border-gray-800 dark:bg-gray-800/40"
+  aria-label="Programming tech stack"
+>
+  <div
+    class="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-gray-50 to-transparent dark:from-gray-900"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-gray-50 to-transparent dark:from-gray-900"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="tech-marquee__track flex w-max">
+    <ul class="flex items-center gap-8 px-6">
+      {
+        trackItems.map((tool) => (
+          <li class="shrink-0">
+            <span class="inline-flex items-center gap-2.5 text-sm font-medium text-gray-700 dark:text-gray-200">
+              <img
+                src={iconSrc(tool)}
+                alt=""
+                width={28}
+                height={28}
+                class:list={[
+                  "h-7 w-7",
+                  tool.invertOnDark && "dark:invert",
+                ]}
+              />
+              <span>{tool.label}</span>
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+    <ul class="flex items-center gap-8 px-6" aria-hidden="true">
+      {
+        trackItems.map((tool) => (
+          <li class="shrink-0">
+            <span class="inline-flex items-center gap-2.5 text-sm font-medium text-gray-700 dark:text-gray-200">
+              <img
+                src={iconSrc(tool)}
+                alt=""
+                width={28}
+                height={28}
+                class:list={[
+                  "h-7 w-7",
+                  tool.invertOnDark && "dark:invert",
+                ]}
+              />
+              <span>{tool.label}</span>
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<style>
+  @keyframes tech-marquee-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .tech-marquee__track {
+    animation: tech-marquee-left 80s linear infinite;
+  }
+
+  .tech-marquee:hover .tech-marquee__track {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tech-marquee__track {
+      animation: none;
+    }
+  }
+</style>
