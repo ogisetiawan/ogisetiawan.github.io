@@ -42,7 +42,7 @@ diupdate sebagai alat personal branding.
    asumsi "boleh".
 8. **Aksesibilitas dasar.** Kontras warna cukup, form punya label, kontrol
    interaktif bisa diakses keyboard (bukan `div onclick` tanpa role/tabindex).
-
+8. **Build.** setelah menyelesakan tugas agent tidak perlu runing `npm run build`
 
 ## Referensi
 - Struktur teknis: lihat `ARCHITECTURE.md`
