@@ -1,6 +1,8 @@
 ---
 import "../../styles/global.css";
 import { portfolioData as portfolio } from "../../data/portfolio";
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
 
 interface Props {
   title?: string;
@@ -59,7 +61,9 @@ const ogImage = new URL(image, Astro.site ?? Astro.url.origin);
       document.documentElement.classList.toggle("dark", theme === "dark");
     </script>
   </head>
-  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+  <body class="bg-white text-gray-900 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100">
+    <Header />
     <slot />
+    <Footer />
   </body>
 </html>
