@@ -1,5 +1,6 @@
 ---
 import { portfolioData as portfolio } from "../../data/portfolio";
+import logoImg from "../../assets/images/ogi.svg";
 
 const { name } = portfolio.profile;
 const { social } = portfolio;
@@ -23,8 +24,17 @@ const icons: Record<string, string> = {
   <div
     class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-8 sm:flex-row sm:px-6 lg:px-8"
   >
-    <p class="text-sm text-gray-500 dark:text-gray-400">
-      &copy; {currentYear} {name}. All rights reserved.
+    <p class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+      <span>&copy; {currentYear}</span>
+      <img
+        src={typeof logoImg === "string" ? logoImg : logoImg.src}
+        alt={name}
+        width="141"
+        height="40"
+        class="h-6 w-auto dark:invert"
+      />
+      <span class="sr-only">{name}</span>
+      <span>All rights reserved.</span>
     </p>
 
     <ul class="flex items-center gap-4">

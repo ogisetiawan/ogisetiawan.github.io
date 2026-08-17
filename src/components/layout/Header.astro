@@ -1,6 +1,7 @@
 ---
 import { Sun, Moon, Menu, X } from "@lucide/astro";
 import { portfolioData as portfolio } from "../../data/portfolio";
+import logoImg from "../../assets/images/ogi.svg";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -23,9 +24,16 @@ const navLinks = [
     <!-- Brand (left) -->
     <a
       href="#home"
-      class="relative z-10 text-lg font-bold tracking-tight text-gray-900 transition-colors duration-300 hover:text-gray-700 dark:text-white dark:hover:text-gray-200"
+      class="relative z-10 transition-opacity duration-300 hover:opacity-80"
+      aria-label={`${portfolio.profile.name} - Home`}
     >
-      {portfolio.profile.name}
+      <img
+        src={typeof logoImg === "string" ? logoImg : logoImg.src}
+        alt={`${portfolio.profile.name} logo`}
+        width="141"
+        height="40"
+        class="h-8 w-auto dark:invert"
+      />
     </a>
 
     <!-- Desktop nav (center) -->
