@@ -87,6 +87,39 @@ const ogImage = new URL(image, Astro.site ?? Astro.url.origin);
           .querySelectorAll("[data-reveal], [data-reveal-item]")
           .forEach((el) => observer.observe(el));
       }
+
+      function revealSkeleton(root: Element) {
+        root.classList.add("is-loaded");
+      }
+
+      document.querySelectorAll("[data-skeleton]").forEach((root) => {
+        const images = Array.from(root.querySelectorAll("img"));
+        const finish = () => revealSkeleton(root);
+
+        if (
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+          images.length === 0
+        ) {
+          finish();
+          return;
+        }
+
+        let pending = images.length;
+        const onDone = () => {
+          pending -= 1;
+          if (pending <= 0) finish();
+        };
+
+        for (const img of images) {
+          if (img.complete) onDone();
+          else {
+            img.addEventListener("load", onDone, { once: true });
+            img.addEventListener("error", onDone, { once: true });
+          }
+        }
+
+        window.setTimeout(finish, 4000);
+      });
     </script>
   </body>
 </html>

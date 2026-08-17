@@ -1,0 +1,64 @@
+---
+interface Props {
+  variant: "project" | "experience" | "cert";
+}
+
+const { variant } = Astro.props;
+---
+
+<div
+  class="skeleton-overlay pointer-events-none absolute inset-0 z-10 overflow-hidden rounded-[inherit] bg-white dark:bg-gray-800"
+  aria-hidden="true"
+>
+  {
+    variant === "project" && (
+      <div class="flex h-full flex-col">
+        <div class="skeleton-block aspect-[16/9] w-full rounded-none" />
+        <div class="flex flex-1 flex-col gap-3 p-5">
+          <div class="skeleton-block h-4 w-3/4" />
+          <div class="skeleton-block h-3 w-full" />
+          <div class="skeleton-block h-3 w-5/6" />
+          <div class="mt-auto flex gap-2">
+            <div class="skeleton-block h-5 w-16 rounded-md" />
+            <div class="skeleton-block h-5 w-14 rounded-md" />
+            <div class="skeleton-block h-5 w-20 rounded-md" />
+          </div>
+        </div>
+      </div>
+    )
+  }
+  {
+    variant === "experience" && (
+      <div class="flex h-full flex-col gap-3 p-5">
+        <div class="flex items-start gap-3">
+          <div class="skeleton-block h-11 w-11 shrink-0 rounded-lg" />
+          <div class="flex min-w-0 flex-1 flex-col gap-2">
+            <div class="skeleton-block h-4 w-3/4" />
+            <div class="skeleton-block h-3 w-1/2" />
+          </div>
+        </div>
+        <div class="skeleton-block h-5 w-36 rounded" />
+        <div class="skeleton-block h-3 w-full" />
+        <div class="skeleton-block h-3 w-11/12" />
+        <div class="skeleton-block h-3 w-4/5" />
+      </div>
+    )
+  }
+  {
+    variant === "cert" && (
+      <div class="flex h-full flex-col p-4">
+        <div class="mb-3 flex items-center justify-between">
+          <div class="skeleton-block h-11 w-11 rounded-lg" />
+          <div class="skeleton-block h-6 w-24 rounded-md" />
+        </div>
+        <div class="skeleton-block h-4 w-full" />
+        <div class="mt-2 skeleton-block h-3 w-2/3" />
+        <div class="mt-auto flex gap-1 pt-4">
+          <div class="skeleton-block h-4 w-14 rounded-md" />
+          <div class="skeleton-block h-4 w-16 rounded-md" />
+          <div class="skeleton-block h-4 w-12 rounded-md" />
+        </div>
+      </div>
+    )
+  }
+</div>
