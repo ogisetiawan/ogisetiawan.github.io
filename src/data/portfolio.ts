@@ -16,20 +16,26 @@ import webPrImg from "../assets/projects/web-pr.png";
 import webHitsrecordsImg from "../assets/projects/web-hitsrecords.png";
 import webStarhitsImg from "../assets/projects/web-starhits.png";
 import projectPlaceholderImg from "../assets/projects/project-placeholder.svg";
-
+import profileImg from "../assets/images/ogi-setiawan.png";
+import webManagementDashboardImg from "../assets/projects/web-management-dashboard.png";
+import webCustomerPortalImg from "../assets/projects/web-customer-portal.png";
+import webWidgetTicketingImg from "../assets/projects/web-widget-ticket.png";
+import webAccountSwitcherImg from "../assets/projects/account-switcher.png";
 export interface Profile {
   name: string;
+  heroText: string;
   title: string;
   roles: string[];
   tagline: string;
   bio: string;
+  about: string;
   birthDate: string;
   experienceStartDate: string;
   education: string;
   freelanceAvailable: boolean;
   location: string;
   images: {
-    profile: string;
+    profile: ImageMetadata;
     cover: string;
     logoIcon: string;
   };
@@ -108,6 +114,8 @@ export interface Project {
   features: string[];
   technologies: string[];
   url: string | null;
+  period?: string;
+  featured?: boolean;
 }
 
 /** Dummy testimonials — replace with real LinkedIn recommendations when available */
@@ -136,24 +144,25 @@ export interface PortfolioData {
 
 export const portfolioData: PortfolioData = {
   profile: {
-    name: "Ogi Setiawan",
-    title: "Web Developer",
+    name: "I'm Ogi Setiawan",
+    heroText: "Building Enterprise Web Applications, AI Workflows & Business Automation.",
+    title: "Full Stack Software Engineer",
     roles: [
       "Frontend Developer",
       "Backend Developer",
       "Engineer",
       "Web Developer",
     ],
-    tagline:
-      "Frontend | Backend | Engineer | Developer with a Flair for UI/UX Design and System Analysis",
-    bio: "Experienced in project management, system architecture, and software development, with a proven ability to transform complex technical challenges into clear, actionable strategies. Proficient in Javascript, Node.js, Laravel/PHP, and other key technologies, I bring specialized expertise to every project. Passionate about staying ahead of industry trends and continuously expanding my skill set to remain at the forefront of IT innovation. I thrive in cross-functional teams, delivering impactful solutions that align technology with business objectives.",
+    tagline:"Building Enterprise Web Applications, AI Workflows & Business Automation",
+    bio: "Experienced in project management, system architecture, and software development, with a proven ability to transform complex technical challenges into clear, actionable strategies. Proficient in Javascript, Node.js, Laravel/PHP, and other key technologies, I bring specialized expertise to every project. Passionate about staying ahead of industry trends and continuously expanding my skill set to remain at the forefront of IT innovation. I thrive in cross-functional teams, delivering impactful solutions that align technology with business objectives. Let's connect and explore how we can collaborate to drive technological excellence and create meaningful change!",
+    about: "I build enterprise web applications, business automation, and AI-powered solutions that help organizations simplify complex workflows and improve operational efficiency. What I'm known for Designing and developing enterprise applications using React JS, NestJS, TypeScript, SQL Server, Laravel and modern web technologies2. Building AI-powered workflows, Retrieval-Augmented Generation (RAG) systems, local LLM integrations, and productivity automation3. Delivering scalable solutions by combining system architecture, API integration, database design, and user-focused experiencesWith several years of experience as a Full Stack Software Engineer, I've worked across the full software development lifecycle from requirement analysis and system architecture to implementation, deployment, and continuous improvementI'm always interested in collaborating on enterprise software, AI integration, automation, and innovative digital products. If you're working on challenging problems or looking for someone passionate about building scalable solutions, I'd be happy to connect",
     birthDate: "1995-10-16",
     experienceStartDate: "2014-07-01",
     education: "Bachelor's Degree",
     freelanceAvailable: true,
     location: "South Tangerang, Banten, Indonesia",
     images: {
-      profile: "assets/images/ogi-profile.jpg",
+      profile: profileImg,
       cover: "assets/images/ogi-14-2000x1798.jpeg",
       logoIcon: "assets/images/logo-icon.png",
     },
@@ -169,7 +178,7 @@ export const portfolioData: PortfolioData = {
     {
       platform: "LinkedIn",
       icon: "linkedin",
-      url: "https://www.linkedin.com/in/ogisetiawan",
+      url: "https://www.linkedin.com/in/ogi-setiawan-software-engineer/",
     },
     {
       platform: "GitHub",
@@ -200,22 +209,22 @@ export const portfolioData: PortfolioData = {
         "Build a web-sites modern and mobile-friendly such as single static page and complex web page that will reach your marketing.",
     },
     {
-      name: "Search Engine Optimize (SEO)",
+      name: "RAG Integration",
       icon: "world",
       description:
-        "Process of improving the quality and quantity of website traffic to a website from search engines.",
+        "Integrate RAG into your applications to enhance functionality and improve user experience.",
     },
     {
-      name: "Web Design",
+      name: "AI Integration",
       icon: "desktop",
       description:
-        "Design of user interfaces for focus on maximizing and user experience for Digital Products.",
+        "Integrate AI models into your applications to enhance functionality and improve user experience.",
     },
     {
-      name: "Graphic Design",
+      name: "AI Workflow Automation",
       icon: "paintbrush",
       description:
-        "Create visual content to communicate messages for promote and sell products to develop a brand indentity.",
+        "Automate tasks and improve efficiency using AI workflows.",
     },
   ],
   interests: ["Programming", "Robotics", "Games", "Design"],
@@ -231,7 +240,7 @@ export const portfolioData: PortfolioData = {
         "Collaborate with stakeholders to understand business requirements and translate them into effective technical solutions",
         "Design and develop web applications from scratch, including frontend and backend elements",
         "Integrate diverse data sources and APIs into web applications to enhance functionality",
-        "Preparation Internal Testing / UAT",
+        "Preparation internal testing (unit testing)",
         "Prepare server and deployment",
       ],
     },
@@ -382,24 +391,38 @@ export const portfolioData: PortfolioData = {
       startDate: "2013",
       endDate: "2017",
       description:
-        "Software Architecture. Excelled in Programming. GPA 3.4",
+        "Software Architecture. Excelled in Programming. GPA 3.33",
     },
   ],
   certifications: [
     {
+      name: "AWS AI Academy",
+      issuer: "AWS AI Academy",
+      date: "July 2026",
+      coursework: "Python, Machine Learning, Deep Learning, Spec Driven - Kiro",
+      certificate: "https://drive.google.com/file/d/1_0cZ6D7p5T1LKFb3bVqblcDwl__Z7mw0/view",
+    },
+    {
       name: "Google Project Management",
       issuer: "Google",
       date: "July 2024",
-      coursework: "Project Planning, Agile & Waterfall Methodologies",
+      coursework: "Project Planning, Project Scope, Agile & Scrum Master, Risk Management ",
       certificate: "https://www.coursera.org/account/accomplishments/specialization/R4EE68GSQ29N",
     },
     {
-      name: "Architecting on Amazon Web Server",
+      name: "Back-End Web Developer Expert",
       issuer: "Dicoding Indonesia",
-      date: "July 2023",
-      coursework: "Microservices, Serverless Computing",
-      certificate: "https://www.dicoding.com/certificates/98XW6DNMWXM3",
+      date: "Dec 2023",
+      coursework: "CI/CD, Automation Test, Microservices, Node JS, AWS",
+      certificate: "https://www.dicoding.com/certificates/2VX3O6YJVZYQ",
     },
+    // {
+    //   name: "Belajar Fundamental Aplikasi Back-End",
+    //   issuer: "Dicoding Indonesia",
+    //   date: "Jul 2023",
+    //   coursework: "",
+    //   certificate: "https://www.dicoding.com/certificates/0LZ09MRNNZ65",
+    // },
     {
       name: "Front-End Web Developer Expert",
       issuer: "Dicoding Indonesia",
@@ -407,36 +430,88 @@ export const portfolioData: PortfolioData = {
       coursework: "Web Applications (PWAs), React.js, Node.js, Tailwind",
       certificate: "https://www.dicoding.com/certificates/L4PQ6NRE4PO1",
     },
-    {
-      name: "Back-End Web Developer Expert",
-      issuer: "Dicoding Indonesia",
-      date: "Dec 2023",
-      coursework: "CI/CD, Automation Test, Security, Node JS, AWS",
-      certificate: "https://www.dicoding.com/certificates/2VX3O6YJVZYQ",
-    },
-    {
-      name: "Web Application React",
-      issuer: "Dicoding Indonesia",
-      date: "Aug 2022",
-      coursework: "React.js, Express.js, Webpack",
-      certificate: "https://www.dicoding.com/certificates/EYX42NJ1RZDL",
-    },
-    {
-      name: "Vue JS",
-      issuer: "Bobastudio",
-      date: "Dec 2020",
-      coursework: "Vue.js, Bootstrap, Javascript",
-      certificate: "http://api-kartuprakerja.babastudio.com/certificates/287903_249833_103_print.pdf",
-    },
+    // {
+    //   name: "Belajar Fundamental Front-End Web Development",
+    //   issuer: "Dicoding Indonesia",
+    //   date: "Dec 2022",
+    //   coursework: "",
+    //   certificate: "https://www.dicoding.com/certificates/L4PQ650M2PO1",
+    // },
+    // {
+    //   name: "Belajar Membuat Aplikasi Back-End untuk Pemula",
+    //   issuer: "Dicoding Indonesia",
+    //   date: "Nov 2022",
+    //   coursework: "",
+    //   certificate: "https://www.dicoding.com/certificates/1RXYO6DV3PVM",
+    // },
+    // {
+    //   name: "Belajar Membuat Front-End Web untuk Pemula",
+    //   issuer: "Dicoding Indonesia",
+    //   date: "Sep 2022",
+    //   coursework: "",
+    //   certificate: "https://www.dicoding.com/certificates/1RXYMG04KXVM",
+    // },
+    // {
+    //   name: "Belajar Membuat Aplikasi Web dengan React",
+    //   issuer: "Dicoding Indonesia",
+    //   date: "Aug 2022",
+    //   coursework: "React.js, Express.js, Webpack",
+    //   certificate: "https://www.dicoding.com/certificates/EYX42NJ1RZDL",
+    // },
+    // {
+    //   name: "Belajar Dasar Pemrograman JavaScript",
+    //   issuer: "Dicoding Indonesia",
+    //   date: "Aug 2022",
+    //   coursework: "",
+    //   certificate: "https://www.dicoding.com/certificates/2VX31L65NZYQ",
+    // },
+    // {
+    //   name: "Belajar Dasar Pemrograman Web",
+    //   issuer: "Dicoding Indonesia",
+    //   date: "Jul 2022",
+    //   coursework: "",
+    //   certificate: "https://www.dicoding.com/certificates/4EXG53YWEXRL",
+    // },
+    // {
+    //   name: "Cloud Practitioner Essentials (Belajar Dasar AWS Cloud)",
+    //   issuer: "Dicoding Indonesia",
+    //   date: "Jun 2021",
+    //   coursework: "AWS Cloud, Cloud Computing",
+    //   certificate: "https://www.dicoding.com/certificates/98XW6DNMWXM3",
+    // },
+    // {
+    //   name: "Vue JS",
+    //   issuer: "PT. Babastudio",
+    //   date: "Dec 2020",
+    //   coursework: "Vue.js, Bootstrap, Javascript",
+    //   certificate: "https://api-kartuprakerja.babastudio.com/certificates/287903_249833_103_print.pdf",
+    // },
   ],
   skills: {
     programming: [
       { name: "JavaScript / ES6 / jQuery", level: "Expert" },
       { name: "PHP Laravel Framework", level: "Expert" },
-      { name: "PHP CodeIgniter Framework", level: "Proficient" },
-      { name: "Node.js / Express.js", level: "Proficient" },
+      { name: "PHP CodeIgniter Framework", level: "Expert" },
+      { name: "Node.js / Express.js", level: "Expert" },
       { name: "React.js", level: "Proficient" },
-      { name: "PostgreSQL / MySQL / MSSQL", level: "Proficient" },
+      { name: "PostgreSQL", level: "Proficient" },
+      { name: "Docker", level: "Beginner" },
+      { name: "Astro", level: "Proficient" },
+      { name: "Github", level: "Proficient" },
+      { name: "NestJS", level: "Proficient" },
+      { name: "NextJS", level: "Proficient" },
+      { name: "TypeScript", level: "Proficient" },
+      { name: "Tailwind CSS", level: "Proficient" },
+      { name: "Bootstrap", level: "Proficient" },
+      { name: "HTML5 & CSS3", level: "Proficient" },
+      { name: "RESTful API", level: "Proficient" },
+      { name: "Python", level: "Beginner" },
+      { name: "AWS", level: "Beginner" },
+      { name: "Linux", level: "Beginner" },
+      { name: "GitLab", level: "Proficient" },
+      { name: "Redis", level: "Beginner" },
+      { name: "SQL Server", level: "Proficient" },
+      { name: "Notion", level: "Proficient" },
     ],
     hardSkills: [
       { name: "API Development", level: "Proficient" },
@@ -493,30 +568,69 @@ export const portfolioData: PortfolioData = {
   ],
   projects: [
     {
+      id: "restaurant-app",
+      title: "Restaurant App",
+      shortTitle: "Restaurant App",
+      category: "Web Application",
+      image: projectPlaceholderImg,
+      description: "A restaurant web application.",
+      features: [],
+      technologies: [
+        "React JS",
+        "Jest",
+        "EcmaScript",
+        "NodeJS",
+        "HTML5 & CSS3",
+        "CI/CD",
+        "GIT",
+      ],
+      url: "https://restoerant.netlify.app/",
+      period: "May 2023 – Aug 2023",
+    },
+    {
+      id: "movie-catalogue",
+      title: "Movie Catalogue",
+      shortTitle: "Movie Catalogue",
+      category: "Web Application",
+      image: projectPlaceholderImg,
+      description:
+        "A movie catalog web app with push notifications, using CI/CD techniques for the deployment process to the host.",
+      features: ["Push notifications", "CI/CD deployment"],
+      technologies: [
+        "EcmaScript",
+        "NodeJS",
+        "HTML5 & CSS3",
+        "Socket.IO",
+        "CI/CD",
+        "GIT",
+      ],
+      url: null,
+      period: "Sep 2022 – Jan 2023",
+    },
+    {
       id: "customer-portal-behn-meyer",
       title: "Customer Portal at Behn Meyer",
       shortTitle: "Customer Portal",
       category: "Web Application",
-      image: projectPlaceholderImg,
+      image: webCustomerPortalImg,
       description:
-        "An e-commerce website that can help customers make purchases on products in different countries.",
+        "Behn Meyer Customer Portal is a B2B web application designed to digitalize and streamline customer-facing business processes. The platform provides customers with centralized access to their account and transaction information, including credit limits, quotations, order tracking, and support requests, while enabling more direct communication with Behn Meyer’s sales teams.The portal improves customer self-service capabilities, transaction visibility, and coordination between customers and internal commercial teams by bringing key business interactions into a single digital platform",
       features: [
         "Real-time report",
         "Integrated SAP BW",
-        "Mailer",
         "Multi-level users and roles and more",
       ],
-      technologies: ["Node.js", "SQL", "React JS", "Swagger"],
-      url: null,
+      technologies: ["Node.js", "SQL", "React JS", "TypeScript", "RESTful API", "Microservices"],
+      url: "null",
     },
     {
       id: "dashboard-management-behn-meyer",
       title: "Dashboard Management at Behn Meyer",
       shortTitle: "Dashboard Management",
       category: "Web Application",
-      image: projectPlaceholderImg,
+      image: webManagementDashboardImg,
       description:
-        "A website that can help management to view all complex reports and company performance at a certain time.",
+        "Developed and maintained a web-based Management Dashboard for Behn Meyer, designed as a centralized internal platform for authenticated users to access and manage business-related information. The application implements secure user authentication using email and password credentials, along with an account recovery workflow that allows users to reset forgotten passwords through email verification.`The project focused on building a structured and user-friendly management interface, implementing authentication and access control mechanisms, integrating front-end and back-end processes, and providing a reliable foundation for internal business management functions`The system was developed to support efficient access to organizational information through a centralized web application while maintaining controlled access for authorized users",
       features: [
         "Real-time report",
         "Integrated SAP BW",
@@ -526,9 +640,10 @@ export const portfolioData: PortfolioData = {
       technologies: [
         "Laravel",
         "Bootstrap",
-        "Javascript / jQuery",
-        "Golang",
-        "API service",
+        "Javascript",
+        "RESTful API",
+        "GIT",
+        "SQL Server",
       ],
       url: null,
     },
@@ -541,12 +656,21 @@ export const portfolioData: PortfolioData = {
       description:
         "A website that can help salespeople to predict their sales revenue and turnover in a certain period to be able to make better decisions.",
       features: [
-        "Multi-level roles",
+        "Predict algorithm",
         "Approval system",
-        "Predict algorithm and more",
+        "Mailer notification",
+        "Integrated SAP-B1",
       ],
-      technologies: ["Laravel", "Bootstrap", "Javascript / jQuery", "Bitrix24"],
+      technologies: [
+        "PHP 7",
+        "Laravel",
+        "HTML5 & CSS3",
+        "Datatables Details Rows",
+        "jQuery",
+        "JavaScript",
+      ],
       url: null,
+      period: "Mar 2022 – Nov 2022",
     },
     {
       id: "web-monitoring-sales",
@@ -575,6 +699,7 @@ export const portfolioData: PortfolioData = {
         "PHP",
       ],
       url: "https://pinusmerahabadi.co.id/portal/monitoring/",
+      period: "Mar 2019 – Jun 2019",
     },
     {
       id: "e-invoice-soa",
@@ -599,6 +724,7 @@ export const portfolioData: PortfolioData = {
         "Bitrix24",
       ],
       url: null,
+      period: "Sep 2021 – Mar 2022",
     },
     {
       id: "hitsrecords",
@@ -616,14 +742,16 @@ export const portfolioData: PortfolioData = {
       ],
       technologies: [
         "Laravel 8",
-        "Bootstrap",
+        "Tailwind CSS",
         "JavaScript",
         "AJAX",
         "jQuery",
         "PJAX",
         "OWL Carousel",
       ],
-      url: "https://jalandong.id/hitsrecords/",
+      url: "https://hitsrecords.co.id/",
+      period: "Oct 2021 – Dec 2021",
+      featured: true,
     },
     {
       id: "web-purchase-request",
@@ -647,6 +775,7 @@ export const portfolioData: PortfolioData = {
         "Bitrix24",
       ],
       url: null,
+      period: "May 2021 – Aug 2021",
     },
     {
       id: "web-kor",
@@ -673,6 +802,7 @@ export const portfolioData: PortfolioData = {
         "Rest-full API",
       ],
       url: null,
+      period: "Oct 2020 – Dec 2020",
     },
     {
       id: "web-stock-position",
@@ -696,7 +826,8 @@ export const portfolioData: PortfolioData = {
         "SAP - B1",
         "Bitrix24",
       ],
-      url: null,
+      url: "https://bitrix.mahachem.com/maha/logistics_menu/sub/stock_position.php",
+      period: "Apr 2020 – May 2020",
     },
     {
       id: "web-sales-dashboard",
@@ -721,6 +852,7 @@ export const portfolioData: PortfolioData = {
         "MariaDB",
       ],
       url: null,
+      period: "Mar 2020",
     },
     {
       id: "web-rnd",
@@ -748,6 +880,7 @@ export const portfolioData: PortfolioData = {
         "SAP",
       ],
       url: "https://rndwap.nabatisnack.co.id/",
+      period: "Feb 2020 – Mar 2020",
     },
     {
       id: "web-faktur-pajak",
@@ -770,6 +903,7 @@ export const portfolioData: PortfolioData = {
         "Bootstrap",
       ],
       url: "https://pinusmerahabadi.co.id/pmafaktur/",
+      period: "Oct 2019 – Nov 2019",
     },
     {
       id: "dashboard-monitoring-faktur",
@@ -795,6 +929,7 @@ export const portfolioData: PortfolioData = {
         "jQuery",
       ],
       url: "https://pinusmerahabadi.co.id/monitoringfaktur/",
+      period: "Dec 2019 – Jan 2020",
     },
     {
       id: "web-kpi",
@@ -819,6 +954,7 @@ export const portfolioData: PortfolioData = {
         "jQuery",
       ],
       url: "https://pinusmerahabadi.co.id/pma_dev/kpi/",
+      period: "Nov 2018 – Jan 2019",
     },
     {
       id: "web-elearning",
@@ -834,7 +970,8 @@ export const portfolioData: PortfolioData = {
         "Upload question for user or departement",
       ],
       technologies: ["PHP 5 ( OOP )", "Bootstrap 3", "Javascript"],
-      url: "https://pinusmerahabadi.co.id/portal/",
+      url: "https://pinusmerahabadi.co.id/portal/e-learningpma/index.php?class=index",
+      period: "Feb 2019 – Mar 2019",
     },
     {
       id: "e-redpine",
@@ -846,7 +983,46 @@ export const portfolioData: PortfolioData = {
         "A website that can provide reports, promo transactions, setting the number of promos for each area.",
       features: ["Approval System", "Upload data"],
       technologies: ["PHP 5 ( OOP )", "Bootstrap 3", "Javascript"],
-      url: "https://pinusmerahabadi.co.id/portal/",
+      url: "https://pinusmerahabadi.co.id/portal/redpinereport",
+      period: "May 2019 – Aug 2019",
+    },
+    {
+      id: "web-proman",
+      title: "Web Proman",
+      shortTitle: "Web Proman",
+      category: "Web Application",
+      image: projectPlaceholderImg,
+      description:
+        "A project management tools website that can manage projects, tasks, subtasks, and project deadlines.",
+      features: ["Project management", "Task & subtask", "Deadline tracking"],
+      technologies: [
+        "HTML5 & CSS3",
+        "Bootstrap 3",
+        "AJAX",
+        "CodeIgniter 3",
+        "JavaScript",
+        "jQuery",
+        "PHP",
+      ],
+      url: null,
+      period: "Jul 2017 – Feb 2018",
+    },
+    {
+      id: "web-portofolio",
+      title: "Web Portofolio",
+      shortTitle: "Web Portofolio",
+      category: "Website",
+      image: projectPlaceholderImg,
+      description:
+        "Personal portfolio website with information about experience, portfolio, skills, contact, and social media.",
+      features: [
+        "Dynamic Menu Rendering",
+        "SEO Optimize",
+        "Clean and Responsive Design",
+      ],
+      technologies: ["HTML5 & CSS3", "JavaScript", "jQuery"],
+      url: "https://ogisetiawan.github.io/",
+      period: "Oct 2015",
     },
     {
       id: "starhits",
@@ -854,7 +1030,7 @@ export const portfolioData: PortfolioData = {
       shortTitle: "Starhits.id",
       category: "Web Application",
       image: webStarhitsImg,
-      description: "Web portal and content management system.",
+      description: "The platform serves as a centralized digital ecosystem for presenting StarHits' business services, creator and influencer networks, production capabilities, digital campaign portfolios, corporate information, and media content.Key areas of the platform include Multi-Channel Network (MCN) services, influencer management, creative digital campaigns, video and design production services, news and content publishing, user authentication, and business project submission.The development focused on building a responsive, structured, and scalable web platform capable of managing dynamic content while providing an accessible experience for creators, brands, business partners, and general visitors.",
       features: [
         "Clean and Responsive Design",
         "Server side rendering",
@@ -870,8 +1046,73 @@ export const portfolioData: PortfolioData = {
         "OWL Carousel",
       ],
       url: "https://starhits.id",
+      period: "Apr 2022 – Jul 2022",
+      featured: true,
+    },
+    {
+      id: "widget-ticketing",
+      title: "Widget Ticketing Form",
+      shortTitle: "Widget Ticketing",
+      category: "Web Application",
+      image: webWidgetTicketingImg,
+      description: "Developed an integrated Ticketing Support Widget designed to provide a centralized support channel that can be embedded into multiple internal and customer-facing applications. The widget enables users to create and track support tickets directly from the application they are using, without requiring access to a separate support system. Users can submit different types of requests, including bug reports, technical assistance, special requests, and customer support inquiries, along with detailed descriptions and supporting file attachments. Built using React for the interactive frontend and Laravel for backend services and ticket processing, the widget is designed as a reusable and flexible component that can be integrated across different web applications. The ticketing workflow is integrated with email notifications to ensure relevant teams are immediately informed when new requests are submitted or updated. It is also connected with Notion to centralize ticket documentation, issue tracking, status monitoring, and collaboration between technical and business teams.",
+      features: [
+        "Notion Integration ",
+        "Email Notifications",
+        "Ticket Management",
+        "File Upload",
+      ],
+      technologies: [
+        "Node.js",
+        "React JS",
+        "TypeScript",
+        "RESTful API",
+        "Tailwind CSS",
+        "GIT",
+      ],
+      url: null,
+      period: "Aug 2025 – Nov 2025",
+    },
+    {
+      id: "account-switcher",
+      title: "Account Switcher",
+      shortTitle: "Account Switcher",
+      category: "Extension",
+      image: webAccountSwitcherImg,
+      description: "A privacy-focused browser extension that enables users to save and switch between multiple authenticated website sessions without repeatedly logging out and logging back in. The extension captures and manages session states including cookies, localStorage, and sessionStorage, allowing users to switch between different accounts or user roles with a single action. It is particularly useful for UAT and QA testing, multi-account SaaS workflows, client demonstrations, technical support, and development environments where multiple user personas need to be tested efficiently.Built with TypeScript, JavaScript, HTML, CSS, and Manifest V3, with cross-browser support for Chrome and Firefox. Session data is stored locally using browser storage without requiring a backend service or cloud synchronization.The project also includes browser-specific build processes using esbuild, local session management, automatic session synchronization, and a privacy-first architecture designed to keep authentication data on the user's device.",
+      features: [
+        "Multiple Accounts Sessions Management",
+        "Import/Export Sessions ",
+        "Light, dark & system themes",
+        "Keyboard Shortcuts",
+        "Quick Switch",
+      ],
+      technologies: [
+        "Node.js",
+        "React JS",
+        "TypeScript",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Manifest V3",
+        "esbuild",
+        "Local Session Management",
+        "Automatic Session Synchronization",
+        "Privacy-First Architecture",
+        "GIT",
+      ],
+      url: "https://ogisetiawan.github.io/account-switcher/",
+      period: "Aug 2025 – Nov 2025",
+      featured: true,
     },
   ],
 };
+
+/** Manual featured order — first ID = large hero card, rest = side cards. */
+export const featuredProjectOrder = [
+  "account-switcher",
+  "hitsrecords",
+  "starhits",
+] as const;
 
 export default portfolioData;

@@ -1,114 +1,252 @@
 ---
-import { portfolioData as portfolio } from "../../data/portfolio";
-import ProjectCard from "../ui/ProjectCard.astro";
+import { Image } from "astro:assets";
+import { portfolioData as portfolio, featuredProjectOrder } from "../../data/portfolio";
+import { ArrowUpRight, X, LayoutGrid } from "@lucide/astro";
 
-// Map data categories to filter slugs used by the buttons
-const categoryMap: Record<string, string> = {
-  "Web Application": "web",
-  "Desktop Application": "desktop",
-  Robotics: "robotics",
-};
+const featured = featuredProjectOrder.map((id) => {
+  const project = portfolio.projects.find((p) => p.id === id);
+  if (!project) throw new Error(`Featured project "${id}" not found in portfolio data`);
+  if (!project.featured) throw new Error(`Project "${id}" must have featured: true`);
+  return project;
+});
 
-const filters = [
-  { label: "All", value: "all" },
-  { label: "Web App", value: "web" },
-  { label: "Desktop", value: "desktop" },
-  { label: "Robotics", value: "robotics" },
-];
+const [hero, ...sideProjects] = featured;
 
-const projects = portfolio.projects.map((project) => ({
-  ...project,
-  slug: categoryMap[project.category] ?? "other",
-}));
+const featuredIds = new Set<string>(featuredProjectOrder);
+const otherProjects = portfolio.projects.filter((p) => !featuredIds.has(p.id));
 ---
 
 <section id="projects" class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
   <div class="mb-12 text-center">
-    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+    <h2
+      class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
+    >
       Featured Projects
     </h2>
+    <p class="mt-4 text-base text-gray-600 dark:text-gray-400">
+      A selection of my best work — the rest is just one click away.
+    </p>
   </div>
 
-  <!-- Filter buttons -->
-  <div class="mb-10 flex flex-wrap justify-center gap-3" role="group" aria-label="Filter projects">
-    {
-      filters.map((filter, i) => (
-        <button
-          type="button"
-          class:list={[
-            "filter-btn rounded-full border px-5 py-2 text-sm font-medium transition-colors",
-            i === 0
-              ? "border-gray-900 bg-gray-900 text-white dark:border-white dark:bg-white dark:text-gray-900"
-              : "border-gray-300 text-gray-600 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800",
-          ]}
-          data-filter={filter.value}
-          aria-pressed={i === 0 ? "true" : "false"}
-        >
-          {filter.label}
-        </button>
-      ))
-    }
-  </div>
-
-  <!-- Project grid -->
-  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-    {
-      projects.map((project) => (
-        <div class="project-item" data-category={project.slug}>
-          <ProjectCard
-            title={project.title}
-            description={project.description}
-            image={project.image}
-            tags={project.technologies}
-            demoLink={project.url}
+  <!-- Bento grid: 1 large + 2 medium -->
+  <div class="grid grid-cols-1 gap-5 lg:grid-cols-3">
+    <!-- Large card -->
+    <article
+      class="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl lg:col-span-2 lg:row-span-2 dark:border-gray-800 dark:bg-gray-800"
+    >
+      <a
+        href={hero.url ?? "#projects"}
+        target={hero.url ? "_blank" : undefined}
+        rel="noopener noreferrer"
+        class="flex h-full flex-col"
+      >
+        <div class="relative aspect-[16/9] overflow-hidden bg-gray-100 dark:bg-gray-900">
+          <Image
+            src={hero.image}
+            alt={`Screenshot of ${hero.title}`}
+            width={1200}
+            height={675}
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
+          {
+            hero.url && (
+              <span class="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-gray-900 opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100 dark:bg-gray-900/90 dark:text-white">
+                <ArrowUpRight class="h-4 w-4" aria-hidden="true" />
+              </span>
+            )
+          }
         </div>
+        <div class="flex flex-1 flex-col p-6">
+          <span
+            class="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400"
+          >
+            {hero.category}
+          </span>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+            {hero.title}
+          </h3>
+          <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            {hero.description}
+          </p>
+          <ul class="mt-4 flex flex-wrap gap-1.5">
+            {
+              hero.technologies.slice(0, 3).map((tech) => (
+                <li class="rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600 dark:bg-gray-700 dark:text-gray-300">
+                  {tech}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </a>
+    </article>
+
+    <!-- Medium cards -->
+    {
+      sideProjects.map((project) => (
+        <article class="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl dark:border-gray-800 dark:bg-gray-800">
+          <a
+            href={project.url ?? "#projects"}
+            target={project.url ? "_blank" : undefined}
+            rel="noopener noreferrer"
+            class="flex h-full flex-col"
+          >
+            <div class="relative aspect-[16/9] overflow-hidden bg-gray-100 dark:bg-gray-900">
+              <Image
+                src={project.image}
+                alt={`Screenshot of ${project.title}`}
+                width={600}
+                height={338}
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              {project.url && (
+                <span class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-gray-900 opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100 dark:bg-gray-900/90 dark:text-white">
+                  <ArrowUpRight class="h-4 w-4" aria-hidden="true" />
+                </span>
+              )}
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="text-base font-bold leading-snug text-gray-900 dark:text-white">
+                {project.shortTitle}
+              </h3>
+              <p class="mt-1.5 line-clamp-2 flex-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                {project.description}
+              </p>
+              <ul class="mt-3 flex flex-wrap gap-1.5">
+                {project.technologies.slice(0, 3).map((tech) => (
+                  <li class="rounded-md bg-gray-100 px-2 py-0.5 text-[11px] font-medium text-gray-600 dark:bg-gray-700 dark:text-gray-300">
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </a>
+        </article>
       ))
     }
   </div>
+
+  <!-- View all button -->
+  <div class="mt-10 text-center">
+    <button
+      type="button"
+      id="open-projects-modal"
+      class="inline-flex items-center gap-2 rounded-xl border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 transition-all duration-200 hover:border-gray-400 hover:bg-gray-50 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 dark:border-gray-700 dark:text-gray-200 dark:hover:border-gray-600 dark:hover:bg-gray-800 dark:focus-visible:ring-white dark:focus-visible:ring-offset-gray-900"
+    >
+      <LayoutGrid class="h-4 w-4" aria-hidden="true" />
+      View All Projects ({otherProjects.length} more)
+    </button>
+  </div>
+
+  <!-- All projects modal -->
+  <dialog
+    id="projects-modal"
+    class="fixed inset-0 z-50 m-auto w-full max-w-3xl rounded-2xl border border-gray-200 bg-white p-0 shadow-2xl backdrop:bg-black/60 dark:border-gray-700 dark:bg-gray-900"
+    aria-labelledby="projects-modal-title"
+  >
+    <div
+      class="sticky top-0 flex items-center justify-between border-b border-gray-200 bg-white px-6 py-4 dark:border-gray-700 dark:bg-gray-900"
+    >
+      <h3
+        id="projects-modal-title"
+        class="text-lg font-bold text-gray-900 dark:text-white"
+      >
+        All Projects
+      </h3>
+      <button
+        type="button"
+        id="close-projects-modal"
+        aria-label="Close project list"
+        class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white dark:focus-visible:ring-white"
+      >
+        <X class="h-5 w-5" aria-hidden="true" />
+      </button>
+    </div>
+
+    <div class="max-h-[70vh] overflow-y-auto px-6 py-4">
+      <table class="w-full text-left text-sm">
+        <thead>
+          <tr
+            class="border-b border-gray-200 text-xs uppercase tracking-wider text-gray-500 dark:border-gray-700 dark:text-gray-400"
+          >
+            <th scope="col" class="py-3 pr-4 font-semibold">Project</th>
+            <th scope="col" class="hidden py-3 pr-4 font-semibold sm:table-cell">
+              Tech
+            </th>
+            <th scope="col" class="py-3 font-semibold">
+              <span class="sr-only">Link</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+          {
+            otherProjects.map((project) => (
+              <tr class="group/row">
+                <td class="py-3.5 pr-4">
+                  <p class="font-semibold text-gray-900 dark:text-white">
+                    {project.title}
+                  </p>
+                  <p class="mt-0.5 line-clamp-1 text-xs text-gray-500 dark:text-gray-400">
+                    {project.category}
+                    {project.period && ` · ${project.period}`}
+                  </p>
+                </td>
+                <td class="hidden py-3.5 pr-4 sm:table-cell">
+                  <span class="text-xs text-gray-500 dark:text-gray-400">
+                    {project.technologies.slice(0, 3).join(" · ")}
+                  </span>
+                </td>
+                <td class="py-3.5 text-right">
+                  {project.url ? (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit ${project.title}`}
+                      class="inline-flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white"
+                    >
+                      <ArrowUpRight class="h-4 w-4" aria-hidden="true" />
+                    </a>
+                  ) : (
+                    <span class="text-xs text-gray-300 dark:text-gray-600">
+                      Private
+                    </span>
+                  )}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </dialog>
 </section>
 
 <script>
-  const filterButtons =
-    document.querySelectorAll<HTMLButtonElement>(".filter-btn");
-  const projectItems =
-    document.querySelectorAll<HTMLElement>(".project-item");
+  const modal = document.getElementById(
+    "projects-modal"
+  ) as HTMLDialogElement | null;
+  const openBtn = document.getElementById("open-projects-modal");
+  const closeBtn = document.getElementById("close-projects-modal");
 
-  const activeClasses = [
-    "border-gray-900",
-    "bg-gray-900",
-    "text-white",
-    "dark:border-white",
-    "dark:bg-white",
-    "dark:text-gray-900",
-  ];
-  const inactiveClasses = [
-    "border-gray-300",
-    "text-gray-600",
-    "hover:bg-gray-100",
-    "dark:border-gray-600",
-    "dark:text-gray-300",
-    "dark:hover:bg-gray-800",
-  ];
+  openBtn?.addEventListener("click", () => {
+    modal?.showModal();
+    document.body.style.overflow = "hidden";
+  });
 
-  function setActive(clicked: HTMLButtonElement) {
-    filterButtons.forEach((btn) => {
-      const isActive = btn === clicked;
-      btn.setAttribute("aria-pressed", String(isActive));
-      btn.classList.remove(...(isActive ? inactiveClasses : activeClasses));
-      btn.classList.add(...(isActive ? activeClasses : inactiveClasses));
-    });
+  function closeModal() {
+    modal?.close();
+    document.body.style.overflow = "";
   }
 
-  filterButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const filter = btn.dataset.filter;
-      setActive(btn);
+  closeBtn?.addEventListener("click", closeModal);
 
-      projectItems.forEach((item) => {
-        const matches = filter === "all" || item.dataset.category === filter;
-        item.classList.toggle("hidden", !matches);
-      });
-    });
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  modal?.addEventListener("close", () => {
+    document.body.style.overflow = "";
   });
 </script>
