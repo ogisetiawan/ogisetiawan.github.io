@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { portfolioData as portfolio, featuredProjectOrder } from "../../data/portfolio";
 import { ArrowUpRight, X, LayoutGrid } from "@lucide/astro";
+import SkeletonOverlay from "../ui/SkeletonOverlay.astro";
 
 const featured = featuredProjectOrder.map((id) => {
   const project = portfolio.projects.find((p) => p.id === id);
@@ -34,8 +35,10 @@ const otherProjects = portfolio.projects.filter((p) => !featuredIds.has(p.id));
     <article
       class="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl lg:col-span-2 lg:row-span-2 dark:border-gray-800 dark:bg-gray-800"
       data-reveal-item
+      data-skeleton
       style="--stagger: 0"
     >
+      <SkeletonOverlay variant="project" />
       <a
         href={hero.url ?? "#projects"}
         target={hero.url ? "_blank" : undefined}
@@ -89,8 +92,10 @@ const otherProjects = portfolio.projects.filter((p) => !featuredIds.has(p.id));
         <article
           class="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl dark:border-gray-800 dark:bg-gray-800"
           data-reveal-item
+          data-skeleton
           style={`--stagger: ${i + 1}`}
         >
+          <SkeletonOverlay variant="project" />
           <a
             href={project.url ?? "#projects"}
             target={project.url ? "_blank" : undefined}
