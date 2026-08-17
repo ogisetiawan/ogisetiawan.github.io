@@ -16,7 +16,7 @@ const featuredIds = new Set<string>(featuredProjectOrder);
 const otherProjects = portfolio.projects.filter((p) => !featuredIds.has(p.id));
 ---
 
-<section id="projects" class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+<section id="projects" class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8" data-reveal>
   <div class="mb-12 text-center">
     <h2
       class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
@@ -33,6 +33,8 @@ const otherProjects = portfolio.projects.filter((p) => !featuredIds.has(p.id));
     <!-- Large card -->
     <article
       class="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl lg:col-span-2 lg:row-span-2 dark:border-gray-800 dark:bg-gray-800"
+      data-reveal-item
+      style="--stagger: 0"
     >
       <a
         href={hero.url ?? "#projects"}
@@ -83,8 +85,12 @@ const otherProjects = portfolio.projects.filter((p) => !featuredIds.has(p.id));
 
     <!-- Medium cards -->
     {
-      sideProjects.map((project) => (
-        <article class="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl dark:border-gray-800 dark:bg-gray-800">
+      sideProjects.map((project, i) => (
+        <article
+          class="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl dark:border-gray-800 dark:bg-gray-800"
+          data-reveal-item
+          style={`--stagger: ${i + 1}`}
+        >
           <a
             href={project.url ?? "#projects"}
             target={project.url ? "_blank" : undefined}
