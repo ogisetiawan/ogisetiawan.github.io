@@ -1,0 +1,147 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import { ArrowLeft } from "@lucide/astro";
+---
+
+<BaseLayout
+  title="Page not found — Ogi Setiawan"
+  description="This page does not exist. Return to the homepage to keep exploring the portfolio."
+>
+  <main
+    class="relative flex min-h-[calc(100vh-8rem)] items-center overflow-hidden bg-white px-4 py-20 text-gray-900 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100"
+  >
+    <div
+      class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_1px_1px,rgb(0_0_0/0.05)_1px,transparent_0)] [background-size:28px_28px] dark:bg-[radial-gradient(circle_at_1px_1px,rgb(255_255_255/0.04)_1px,transparent_0)]"
+      aria-hidden="true"
+    >
+    </div>
+    <div
+      class="pointer-events-none absolute left-1/2 top-24 -z-10 h-64 w-64 -translate-x-1/2 rounded-full bg-blue-500/15 blur-3xl dark:bg-blue-500/20"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="mx-auto flex w-full max-w-xl flex-col items-center text-center">
+      <div class="lost-scene relative mb-10 h-48 w-64" aria-hidden="true">
+        <svg
+          class="h-full w-full"
+          viewBox="0 0 256 192"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <text
+            x="128"
+            y="118"
+            text-anchor="middle"
+            class="fill-gray-200 dark:fill-gray-800"
+            font-size="92"
+            font-weight="800"
+            font-family="ui-sans-serif, system-ui, sans-serif">404</text
+          >
+          <g class="lost-plane">
+            <path
+              d="M48 86 L118 104 L48 122 L62 104 Z"
+              class="fill-blue-600 dark:fill-blue-400"
+            ></path>
+            <path
+              d="M62 104 L118 104"
+              class="stroke-white dark:stroke-gray-900"
+              stroke-width="3"
+              stroke-linecap="round"></path>
+          </g>
+          <circle
+            class="lost-dot lost-dot-1 fill-blue-500 dark:fill-blue-400"
+            cx="176"
+            cy="52"
+            r="4"></circle>
+          <circle
+            class="lost-dot lost-dot-2 fill-gray-400 dark:fill-gray-500"
+            cx="204"
+            cy="78"
+            r="3"></circle>
+          <circle
+            class="lost-dot lost-dot-3 fill-blue-400/80"
+            cx="188"
+            cy="128"
+            r="2.5"></circle>
+        </svg>
+      </div>
+
+      <p
+        class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400"
+      >
+        Error 404
+      </p>
+      <h1
+        class="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
+      >
+        Page not found
+      </h1>
+      <p class="mt-4 max-w-md text-base leading-relaxed text-gray-600 dark:text-gray-400">
+        This route wandered off the map. The page you are looking for does not
+        exist — or it packed up and moved.
+      </p>
+
+      <a
+        href="/"
+        class="mt-8 inline-flex items-center gap-2 rounded-xl bg-gray-900 px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-gray-800 hover:shadow-md active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:focus-visible:ring-white dark:focus-visible:ring-offset-gray-900"
+      >
+        <ArrowLeft class="h-4 w-4" aria-hidden="true" />
+        Back to home
+      </a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .lost-plane {
+    animation: fly-loop 4.5s ease-in-out infinite;
+    transform-origin: 80px 104px;
+  }
+
+  .lost-dot-1 {
+    animation: bob 2.4s ease-in-out infinite;
+  }
+
+  .lost-dot-2 {
+    animation: bob 2.8s ease-in-out infinite 0.4s;
+  }
+
+  .lost-dot-3 {
+    animation: bob 3.2s ease-in-out infinite 0.8s;
+  }
+
+  @keyframes fly-loop {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(-8deg);
+    }
+    40% {
+      transform: translate(28px, -18px) rotate(6deg);
+    }
+    70% {
+      transform: translate(12px, 10px) rotate(-2deg);
+    }
+  }
+
+  @keyframes bob {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.55;
+    }
+    50% {
+      transform: translateY(-8px);
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lost-plane,
+    .lost-dot-1,
+    .lost-dot-2,
+    .lost-dot-3 {
+      animation: none;
+    }
+  }
+</style>
