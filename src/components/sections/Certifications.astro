@@ -1,11 +1,11 @@
 ---
 import { portfolioData as portfolio } from "../../data/portfolio";
 import { ArrowUpRight } from "@lucide/astro";
+import SkeletonOverlay from "../ui/SkeletonOverlay.astro";
 
 const LINKEDIN_CERTS =
   "https://www.linkedin.com/in/ogi-setiawan-software-engineer/details/certifications/";
 
-// Keep only advanced / expert level, drop basic/pemula
 const EXCLUDE = /pemula|dasar|fundamental/i;
 
 const featured = portfolio.certifications
@@ -20,27 +20,42 @@ interface IssuerMark {
 const ISSUER_MARKS: Record<string, IssuerMark> = {
   Google: {
     src: "https://cdn.simpleicons.org/google",
-    bg: "bg-white dark:bg-gray-800",
+    bg: "bg-white dark:bg-white",
   },
   "Dicoding Indonesia": {
-    src: "https://www.google.com/s2/favicons?domain=dicoding.com&sz=64",
-    bg: "bg-white dark:bg-gray-700",
+    src: "https://www.google.com/s2/favicons?domain=dicoding.com&sz=256",
+    bg: "bg-white dark:bg-white",
   },
   "AWS AI Academy": {
-    src: "https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=64",
-    bg: "bg-white dark:bg-gray-700",
+    src: "https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=256",
+    bg: "bg-white dark:bg-white",
   },
   "PT. Babastudio": {
-    src: "https://www.google.com/s2/favicons?domain=babastudio.com&sz=64",
-    bg: "bg-white dark:bg-gray-700",
+    src: "https://www.google.com/s2/favicons?domain=babastudio.com&sz=256",
+    bg: "bg-white dark:bg-white",
   },
+};
+
+const MONTHS: Record<string, string> = {
+  Jan: "January",
+  Feb: "February",
+  Mar: "March",
+  Apr: "April",
+  May: "May",
+  Jun: "June",
+  Jul: "July",
+  Aug: "August",
+  Sep: "September",
+  Oct: "October",
+  Nov: "November",
+  Dec: "December",
 };
 
 function issuerMark(issuer: string): IssuerMark {
   return (
     ISSUER_MARKS[issuer] ?? {
-      src: `https://www.google.com/s2/favicons?domain=${encodeURIComponent(issuer)}&sz=64`,
-      bg: "bg-white dark:bg-gray-700",
+      src: `https://www.google.com/s2/favicons?domain=${encodeURIComponent(issuer)}&sz=256`,
+      bg: "bg-white dark:bg-white",
     }
   );
 }
@@ -51,9 +66,27 @@ function parseCoursework(coursework: string): string[] {
     .map((item) => item.trim())
     .filter(Boolean);
 }
+
+function formatCertDate(date: string): { label: string; datetime: string } {
+  const parts = date.trim().split(/\s+/);
+  const monthRaw = parts[0] ?? date;
+  const year = parts[1] ?? "";
+  const abbr = monthRaw.slice(0, 3);
+  const month = MONTHS[abbr] ?? MONTHS[monthRaw] ?? monthRaw;
+  const monthIndex = Object.keys(MONTHS).indexOf(abbr);
+
+  return {
+    label: year ? `${month} ${year}` : month,
+    datetime:
+      monthIndex >= 0 && year
+        ? `${year}-${String(monthIndex + 1).padStart(2, "0")}`
+        : date,
+  };
+}
+
 ---
 
-<section id="certifications" class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+<section id="certifications" class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8" data-reveal>
   <div class="mb-12 text-center">
     <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
       Certifications
@@ -65,37 +98,43 @@ function parseCoursework(coursework: string): string[] {
 
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
     {
-      featured.map((cert) => {
+      featured.map((cert, i) => {
         const mark = issuerMark(cert.issuer);
         const topics = parseCoursework(cert.coursework);
+        const { label: dateLabel, datetime } = formatCertDate(cert.date);
         return (
           <a
             href={cert.certificate ?? LINKEDIN_CERTS}
             target="_blank"
             rel="noopener noreferrer"
-            class="group flex flex-col rounded-xl border border-gray-200 bg-white p-4 transition-all duration-200 hover:border-gray-900 hover:shadow-md dark:border-gray-800 dark:bg-gray-800/60 dark:hover:border-gray-500"
+            class="group relative flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white p-4 transition-all duration-200 hover:scale-[1.03] hover:border-blue-500 hover:shadow-md dark:border-gray-800 dark:bg-gray-800/60 dark:hover:border-blue-500"
+            data-reveal-item
+            data-skeleton
+            style={`--stagger: ${i}`}
           >
+            <SkeletonOverlay variant="cert" />
             <div class="mb-3 flex items-center justify-between gap-2">
               <span
                 class:list={[
-                  "flex h-9 w-9 flex-none items-center justify-center rounded-lg border border-gray-200 dark:border-gray-600",
+                  "flex h-11 w-11 flex-none items-center justify-center overflow-hidden rounded-lg border border-gray-200 p-1.5 dark:border-gray-600",
                   mark.bg,
                 ]}
               >
                 <img
                   src={mark.src}
                   alt={`${cert.issuer} logo`}
-                  width={18}
-                  height={18}
-                  class="h-[18px] w-[18px]"
+                  width={32}
+                  height={32}
+                  class="h-8 w-8 object-contain"
                   loading="lazy"
+                  decoding="async"
                 />
               </span>
               <time
-                datetime={cert.date}
-                class="font-mono text-[11px] text-gray-400 dark:text-gray-500"
+                datetime={datetime}
+                class="rounded-md bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-700 dark:bg-blue-950/50 dark:text-blue-300"
               >
-                {cert.date}
+                {dateLabel}
               </time>
             </div>
 
