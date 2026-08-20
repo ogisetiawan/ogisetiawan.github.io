@@ -29,6 +29,7 @@ export interface Profile {
   tagline: string;
   bio: string;
   about: string;
+  about2: string;
   birthDate: string;
   experienceStartDate: string;
   education: string;
@@ -156,7 +157,8 @@ export const portfolioData: PortfolioData = {
     ],
     tagline:"I bridge legacy infrastructure with modern web technologies & transform complex business requirements into scalable web solutions",
     bio: "Experienced in project management, system architecture, and software development, with a proven ability to transform complex technical challenges into clear, actionable strategies. Proficient in Javascript, Node.js, Laravel/PHP, and other key technologies, I bring specialized expertise to every project. Passionate about staying ahead of industry trends and continuously expanding my skill set to remain at the forefront of IT innovation. I thrive in cross-functional teams, delivering impactful solutions that align technology with business objectives. Let's connect and explore how we can collaborate to drive technological excellence and create meaningful change!",
-    about: "I build enterprise web applications, business automation, and AI-powered solutions that help organizations simplify complex workflows and improve operational efficiency. What I'm known for Designing and developing enterprise applications using React JS, NestJS, TypeScript, SQL Server, Laravel and modern web technologies2. Building AI-powered workflows, Retrieval-Augmented Generation (RAG) systems, local LLM integrations, and productivity automation3. Delivering scalable solutions by combining system architecture, API integration, database design, and user-focused experiencesWith several years of experience as a Full Stack Software Engineer, I've worked across the full software development lifecycle from requirement analysis and system architecture to implementation, deployment, and continuous improvementI'm always interested in collaborating on enterprise software, AI integration, automation, and innovative digital products. If you're working on challenging problems or looking for someone passionate about building scalable solutions, I'd be happy to connect",
+    about: "I'm a Full stack Software Engineer with 12+ years of experience building enterprise web applications and AI-powered automation solutions.",
+    about2: "I build enterprise web applications, business automation systems, and AI-powered solutions that help organizations simplify complex workflows and improve operational efficiency. I specialize in designing and developing robust enterprise applications using React, NestJS, TypeScript, SQL Server, Laravel, and modern web technologies.",
     birthDate: "1995-10-16",
     experienceStartDate: "2014-07-01",
     education: "Bachelor's Degree",
@@ -204,28 +206,28 @@ export const portfolioData: PortfolioData = {
   ],
   services: [
     {
-      name: "Web Development",
+      name: "Bridging legacy infrastructure with modern technologies",
       icon: "code",
       description:
-        "Build a web-sites modern and mobile-friendly such as single static page and complex web page that will reach your marketing.",
+        "Connect and modernize legacy systems with contemporary web stacks.",
     },
     {
-      name: "RAG Integration",
+      name: "Enterprise integrations (LLM Integration, Bitrix24, REST APIs)",
       icon: "world",
       description:
-        "Integrate RAG into your applications to enhance functionality and improve user experience.",
+        "Integrate LLM, Bitrix24, REST APIs, and other enterprise systems.",
     },
     {
-      name: "AI Integration",
+      name: "Fullstack development (React, Node.js, PHP, TypeScript)",
       icon: "desktop",
       description:
-        "Integrate AI models into your applications to enhance functionality and improve user experience.",
+        "End-to-end development across React, Node.js, PHP, and TypeScript.",
     },
     {
-      name: "AI Workflow Automation",
-      icon: "paintbrush",
+      name: "Team leadership and cross-functional collaboration",
+      icon: "users",
       description:
-        "Automate tasks and improve efficiency using AI workflows.",
+        "Lead delivery with stakeholders across engineering, product, and business teams.",
     },
   ],
   interests: ["Programming", "Robotics", "Games", "Design"],
