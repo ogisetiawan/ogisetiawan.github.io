@@ -145,15 +145,16 @@ export interface PortfolioData {
 export const portfolioData: PortfolioData = {
   profile: {
     name: "I'm Ogi Setiawan",
-    heroText: "Building Enterprise Web Applications, AI Workflows & Business Automation.",
+    // heroText: "Turning complex business requirements into scalable digital solutions.",
+    heroText: "Building Enterprise Web Applications, Business Automation & AI-powered solutions",
     title: "Full Stack Software Engineer",
     roles: [
-      "Frontend Developer",
-      "Backend Developer",
-      "Engineer",
-      "Web Developer",
+      "Full Stack Software Engineer",
+      "Project Management",
+      "AI-integrated development",
+      "UI/UX & Frontend Developer",
     ],
-    tagline:"Building Enterprise Web Applications, AI Workflows & Business Automation",
+    tagline:"I bridge legacy infrastructure with modern web technologies & transform complex business requirements into scalable web solutions",
     bio: "Experienced in project management, system architecture, and software development, with a proven ability to transform complex technical challenges into clear, actionable strategies. Proficient in Javascript, Node.js, Laravel/PHP, and other key technologies, I bring specialized expertise to every project. Passionate about staying ahead of industry trends and continuously expanding my skill set to remain at the forefront of IT innovation. I thrive in cross-functional teams, delivering impactful solutions that align technology with business objectives. Let's connect and explore how we can collaborate to drive technological excellence and create meaningful change!",
     about: "I build enterprise web applications, business automation, and AI-powered solutions that help organizations simplify complex workflows and improve operational efficiency. What I'm known for Designing and developing enterprise applications using React JS, NestJS, TypeScript, SQL Server, Laravel and modern web technologies2. Building AI-powered workflows, Retrieval-Augmented Generation (RAG) systems, local LLM integrations, and productivity automation3. Delivering scalable solutions by combining system architecture, API integration, database design, and user-focused experiencesWith several years of experience as a Full Stack Software Engineer, I've worked across the full software development lifecycle from requirement analysis and system architecture to implementation, deployment, and continuous improvementI'm always interested in collaborating on enterprise software, AI integration, automation, and innovative digital products. If you're working on challenging problems or looking for someone passionate about building scalable solutions, I'd be happy to connect",
     birthDate: "1995-10-16",
