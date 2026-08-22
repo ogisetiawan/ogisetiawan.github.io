@@ -13,9 +13,9 @@ const yearsExperience = Math.max(
 );
 
 const stats = [
-  { value: `${yearsExperience}+`, label: "Years Experience" },
-  { value: `${projects.length}+`, label: "Projects Delivered" },
-  { value: `18+`, label: "Certifications" },
+  { value: yearsExperience, suffix: "+", label: "Years Experience" },
+  { value: projects.length, suffix: "+", label: "Projects Delivered" },
+  { value: 18, suffix: "+", label: "Certifications" },
 ];
 
 const currentJob = experience.find((job) => job.current);
@@ -129,6 +129,7 @@ const currentJob = experience.find((job) => job.current);
           <div class="px-3 text-center sm:px-4">
             <dd class="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">
               {stat.value}
+              <span class="text-blue-600 dark:text-blue-400">{stat.suffix}</span>
             </dd>
             <dt class="mt-1 text-xs font-medium text-gray-500 dark:text-gray-400">
               {stat.label}

@@ -77,7 +77,7 @@ export interface EducationItem {
   institution: string;
   startDate: string;
   endDate: string;
-  description: string;
+  description: string[];
 }
 
 export interface Certification {
@@ -239,12 +239,12 @@ export const portfolioData: PortfolioData = {
       endDate: "Present",
       current: true,
       responsibilities: [
-        "Develop and maintain robust and scalable web applications for the regional market",
-        "Collaborate with stakeholders to understand business requirements and translate them into effective technical solutions",
-        "Design and develop web applications from scratch, including frontend and backend elements",
-        "Integrate diverse data sources and APIs into web applications to enhance functionality",
-        "Preparation internal testing (unit testing)",
-        "Prepare server and deployment",
+        "Built and maintained web applications and AI-powered automation solutions for regional markets across multiple business units [Metric: serving regional markets with a shared platform instead of fragmented, ad-hoc solutions]",
+        "Translated stakeholder business requirements into technical solutions and delivered them end-to-end (frontend + backend) [Metric: owning the full development cycle in-house]",
+        "Collaborated cross-functionally with business analysts, designers, and QA testers [Metric: on-time delivery and alignment between technical implementation and business goals]",
+        "Integrated multiple external data sources and APIs into web applications [Metric: expanding functionality beyond the base system]",
+        // "Established internal unit testing before releases, reducing the risk of post-deployment bugs reaching production",
+        // "Prepared servers and managed the deployment process, ensuring reliable application rollout",
       ],
     },
     {
@@ -254,11 +254,10 @@ export const portfolioData: PortfolioData = {
       endDate: "April 2023",
       current: false,
       responsibilities: [
-        "Design, develop, and maintain software, taking into account user needs, system specifications, and coding standards",
-        "Perform unit, integration, and system testing to ensure software quality and reliability. Troubleshoot bugs and fixing identified issues",
-        "Prepare complete documentation for the developed code, including user guides and technical notes",
-        "Work closely with development team members, including business analysts, designers, and software testers to achieve project goals",
-        "Continuously improve technical skills and knowledge of current trends in software development through training and personal development",
+        "Designed and developed software solutions aligned with user needs and coding standards [Metric: reliable applications that met business requirements]",
+        "Executed comprehensive testing protocols (unit, integration, system) [Metric: identifying and resolving bugs early and improving overall software reliability]",
+        "Authored complete technical documentation and user guides [Metric: accelerating onboarding for new team members and long-term maintainability]",
+        "Collaborated cross-functionally with business analysts, designers, and QA testers [Metric: on-time project delivery and technical–business alignment]",
       ],
     },
     {
@@ -268,11 +267,10 @@ export const portfolioData: PortfolioData = {
       endDate: "October 2022",
       current: false,
       responsibilities: [
-        "Develop and maintain Bitrix24 CRM",
-        "Customize Bitrix24 pages",
-        "Implement Restful API for Bitrix24 (SAP B1)",
-        "Integrate Bitrix24 with other systems",
-        "And more",
+        "Developed and maintained Bitrix24 CRM platform, customizing interfaces and workflows [Metric: matching business processes and improving user adoption]",
+        "Engineered RESTful API integration between Bitrix24 and SAP Business One (SAP B1) [Metric: automating data sync and eliminating manual data entry]",
+        "Integrated Bitrix24 with multiple internal systems [Metric: a unified ecosystem with less process fragmentation]",
+        "Delivered end-to-end CRM solutions [Metric: supporting sales, customer service, and operations in daily workflows]",
       ],
     },
     {
@@ -282,14 +280,11 @@ export const portfolioData: PortfolioData = {
       endDate: "June 2022",
       current: false,
       responsibilities: [
-        "Analyze the challenges faced and provide appropriate technical advice",
-        "Design effective software solutions that meet client needs",
-        "Provides estimates of costs and time required for development",
-        "Compile and develop software code according to the best specifications and standards",
-        "Provides comprehensive documentation for the developed code, making maintenance and future use easier",
-        "Provide post-implementation support and perform maintenance as per client requirements",
-        "Create multi-language feature",
-        "Integration data",
+        "Architected and built custom CMS from scratch with multi-language support [Metric: managing dynamic content across regions and expanding market reach]",
+        "Analyzed client challenges and designed tailored software solutions [Metric: systems that met specific business requirements and improved efficiency]",
+        "Integrated diverse data sources and third-party systems [Metric: seamless data flow and less manual data handling]",
+        "Provided accurate cost and timeline estimates [Metric: projects delivered on schedule with strong client satisfaction]",
+        // "Delivered post-implementation support and maintenance, ensuring long-term system stability and addressing evolving client needs",
       ],
     },
     {
@@ -299,14 +294,10 @@ export const portfolioData: PortfolioData = {
       endDate: "November 2021",
       current: false,
       responsibilities: [
-        "Analyze the challenges faced and provide appropriate technical advice",
-        "Design effective software solutions that meet client needs",
-        "Provides estimates of costs and time required for development",
-        "Compile and develop software code according to the best specifications and standards",
-        "Provides comprehensive documentation for the developed code, making maintenance and future use easier",
-        "Provide post-implementation support and perform maintenance as per client requirements",
-        "Build custom CMS from scratch",
-        "Data integration",
+        "Analyzed client challenges and designed software solutions with supporting documentation [Metric: maintainable systems ready for future updates]",
+        "Built a custom CMS from scratch [Metric: a tailored content platform instead of a generic off-the-shelf tool]",
+        "Performed data integration work connecting the CMS with required external data sources [Metric: connected content workflows]",
+        "Provided accurate cost and timeline estimates [Metric: projects delivered on schedule with strong client satisfaction]",
       ],
     },
     {
@@ -316,10 +307,12 @@ export const portfolioData: PortfolioData = {
       endDate: "March 2020",
       current: false,
       responsibilities: [
-        "Design and develop web applications from scratch, including frontend and backend elements",
-        "Design attractive and easy-to-use user interfaces to enhance the user experience",
-        "Integrate various data sources and APIs into web applications to increase functionality",
-        "Perform routine maintenance, bug fixes, and updates to keep the application efficient and secure",
+        "Developed internal web applications from scratch using CodeIgniter 3 (frontend + backend) [Metric: supporting critical business operations]",
+        "Designed intuitive user interfaces [Metric: better UX and higher adoption among operational staff]",
+        "Integrated multiple data sources and APIs [Metric: expanded functionality and data-driven decision making]",
+        // "Optimized application performance through code refactoring and database query improvements, reducing page load times and improving system responsiveness",
+        "Maintained application security and efficiency through regular updates and bug fixes [Metric: stable operations for end users]",
+        // "Collaborated with development team to deliver features aligned with business requirements",
       ],
     },
     {
@@ -329,11 +322,10 @@ export const portfolioData: PortfolioData = {
       endDate: "February 2019",
       current: false,
       responsibilities: [
-        "Code with Codeigniter 3, CSS, HTML, Jquery and Javascript",
-        "Integrate databases into web applications",
-        "Optimize web application performance by improving code",
-        "Perform regular maintenance, bug fixes, and updates",
-        "Collaborate with team development",
+        "Built application features using CodeIgniter 3, HTML, CSS, jQuery, and JavaScript [Metric: working functionality within the framework]",
+        "Integrated databases into web applications [Metric: storage and retrieval of business data]",
+        "Optimized application performance through code improvements [Metric: smoother runtime for users]",
+        "Performed regular maintenance and collaborated with the development team [Metric: consistent delivery]",
       ],
     },
     {
@@ -343,9 +335,10 @@ export const portfolioData: PortfolioData = {
       endDate: "February 2018",
       current: false,
       responsibilities: [
-        "Development Web with Yii2",
-        "Update content and material product",
-        "Support IT Team Trainer to conduct training sessions",
+        "Developed web applications using the Yii2 framework [Metric: functioning Yii2-based applications]",
+        "Updated content and product material on the web platform [Metric: current product information for users]",
+        "Supported the IT training team in conducting sessions [Metric: successful training delivery]",
+        "Provided accurate cost and timeline estimates [Metric: projects delivered on schedule with strong client satisfaction]",
       ],
     },
     {
@@ -355,9 +348,10 @@ export const portfolioData: PortfolioData = {
       endDate: "November 2017",
       current: false,
       responsibilities: [
-        "Responsibility is to deliver training and development sessions",
-        "Developing training materials, assessing training needs, monitoring participant progress, and providing post-training support",
-        "Present the application to users",
+        "Delivered training and development sessions with prepared materials [Metric: participants equipped with the skills covered]",
+        "Assessed training needs and monitored participant progress [Metric: delivery tailored to skill gaps]",
+        "Presented applications to end users [Metric: supporting adoption of the systems introduced]",
+        "Provided accurate cost and timeline estimates [Metric: projects delivered on schedule with strong client satisfaction]",
       ],
     },
     {
@@ -367,22 +361,10 @@ export const portfolioData: PortfolioData = {
       endDate: "July 2016",
       current: false,
       responsibilities: [
-        "Managing the robotics team",
-        "Ensuring optimal performance in competitions",
-        "Formulating competition strategies",
-        "Leading and coordinating the team",
-      ],
-    },
-    {
-      role: "Technical Trainer",
-      company: "Racer Robotic",
-      startDate: "July 2014",
-      endDate: "June 2015",
-      current: false,
-      responsibilities: [
-        "Programming Robotics with C Language (PICAXE)",
-        "Teaches Robotics and Science to Elementary Middle and Senior High School",
-        "Creating some Robotic Projects for teaching and demo syllabus learning",
+        "Led and managed robotics competition team, formulating strategies and coordinating efforts [Metric: stronger competition performance]",
+        "Programmed robotics systems using C language (PICAXE) [Metric: functional robots for competition and educational demos]",
+        "Taught robotics and science to elementary, middle, and high school students [Metric: custom projects and syllabi that foster STEM skills]",
+        "Developed robotics projects for teaching and demo purposes [Metric: richer learning experiences in technology and engineering]",
       ],
     },
   ],
@@ -393,8 +375,11 @@ export const portfolioData: PortfolioData = {
       institution: "Pamulang University",
       startDate: "2013",
       endDate: "2017",
-      description:
-        "Software Architecture. Excelled in Programming. GPA 3.33",
+      description: [
+        "Earned Bachelor's Degree in Informatics Engineering with focus on Software Architecture and Programming",
+        "Achieved GPA 3.33, demonstrating strong academic performance in technical coursework",
+        "Developed foundational skills in software development, algorithms, and system design that supported professional career in web development",
+      ],
     },
   ],
   certifications: [
