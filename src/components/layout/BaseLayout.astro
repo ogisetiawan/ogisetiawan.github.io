@@ -8,46 +8,100 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  imageType?: string;
+  noindex?: boolean;
 }
 
+const displayName = portfolio.profile.name.replace(/^I'm\s+/i, "").trim();
+const twitterHandle = "@ogisetiawann";
+const fbAppId = "1726237080908581";
+const googleSiteVerification = "LaHYThYh7ZYsFJh_4Ki8V8xDo-i4FbAksr4inp60tdU";
+
+const defaultTitle = `${displayName} - ${portfolio.profile.title} | Portfolio`;
+const defaultDescription = portfolio.profile.about;
+const keywords = [
+  "ogi setiawan",
+  "full stack software engineer",
+  "web developer",
+  "react",
+  "nodejs",
+  "laravel",
+  "php",
+  "typescript",
+  "ai-powered solutions",
+  "indonesia",
+  "south tangerang",
+  "bintaro",
+  "universitas pamulang",
+].join(", ");
+
 const {
-  title = `${portfolio.profile.name} - ${portfolio.profile.title}`,
-  description = portfolio.profile.tagline,
+  title = defaultTitle,
+  description = defaultDescription,
   image = "/og-image.png",
+  imageWidth = 612,
+  imageHeight = 408,
+  imageType = "image/png",
+  noindex = false,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
-const ogImage = new URL(image, Astro.site ?? Astro.url.origin);
+const siteOrigin = Astro.site ?? new URL(Astro.url.origin);
+const canonicalURL = new URL(Astro.url.pathname, siteOrigin);
+const ogImage = new URL(image, siteOrigin);
+const robots = noindex ? "noindex, nofollow" : "index, follow";
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="application-name" content="Portfolio" />
+    <meta name="robots" content={robots} />
+    <meta name="google-site-verification" content={googleSiteVerification} />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Primary Meta Tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="author" content={portfolio.profile.name} />
+    <meta name="author" content={displayName} />
+    <meta name="keywords" content={keywords} />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content={imageType} />
+    <meta property="og:image:width" content={String(imageWidth)} />
+    <meta property="og:image:height" content={String(imageHeight)} />
+    <meta property="og:image:alt" content={`${displayName} — ${portfolio.profile.title}`} />
+    <meta property="og:site_name" content={`${displayName} Portfolio`} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="fb:app_id" content={fbAppId} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={twitterHandle} />
+    <meta name="twitter:creator" content={twitterHandle} />
     <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={`${displayName} — ${portfolio.profile.title}`} />
 
     <!-- Prevent theme flash: apply stored/system preference before paint -->
     <script is:inline>
