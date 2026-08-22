@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import OptimizedImage from "../ui/OptimizedImage.astro";
 import { portfolioData as portfolio } from "../../data/portfolio";
 
 const { profile, services, social } = portfolio;
@@ -38,9 +38,11 @@ const socialIcons: Record<string, string> = {
           aria-hidden="true"
         >
         </div>
-        <Image
+        <OptimizedImage
           src={profile.images.profile}
           alt={`Portrait of ${profile.name}`}
+          loading="eager"
+          fetchpriority="high"
           class="relative z-10 h-full w-full object-contain object-right drop-shadow-[0_16px_28px_rgb(0_0_0_/_0.28)]"
         />
       </div>

@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import OptimizedImage from "../ui/OptimizedImage.astro";
 import { portfolioData as portfolio, featuredProjectOrder } from "../../data/portfolio";
 import { ArrowUpRight, X, LayoutGrid } from "@lucide/astro";
 import SkeletonOverlay from "../ui/SkeletonOverlay.astro";
@@ -48,11 +48,13 @@ const otherProjects = portfolio.projects.filter((p) => !featuredIds.has(p.id));
         class="flex h-full flex-col"
       >
         <div class="relative aspect-[16/9] overflow-hidden bg-gray-100 dark:bg-gray-900">
-          <Image
+          <OptimizedImage
             src={hero.image}
             alt={`Screenshot of ${hero.title}`}
             width={1200}
             height={675}
+            loading="eager"
+            fetchpriority="high"
             class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
           {
@@ -137,7 +139,7 @@ const otherProjects = portfolio.projects.filter((p) => !featuredIds.has(p.id));
             class="flex h-full flex-col"
           >
             <div class="relative aspect-[16/9] overflow-hidden bg-gray-100 dark:bg-gray-900">
-              <Image
+              <OptimizedImage
                 src={project.image}
                 alt={`Screenshot of ${project.title}`}
                 width={600}

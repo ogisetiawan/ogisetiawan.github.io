@@ -1,0 +1,44 @@
+---
+/**
+ * Local image helper — emit high-quality WebP for on-page display.
+ * SVG logos and remote CDN icons stay as plain <img>.
+ * OG/social share images remain PNG/JPEG in /public.
+ */
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: "eager" | "lazy";
+  decoding?: "async" | "auto" | "sync";
+  fetchpriority?: "high" | "low" | "auto";
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  class: className,
+  loading = "lazy",
+  decoding = "async",
+  fetchpriority,
+} = Astro.props;
+---
+
+<Image
+  src={src}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={loading}
+  decoding={decoding}
+  fetchpriority={fetchpriority}
+  format="webp"
+  quality={90}
+/>
