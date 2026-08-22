@@ -214,22 +214,22 @@ export const portfolioData: PortfolioData = {
         "Connect and modernize legacy systems with contemporary web stacks.",
     },
     {
-      name: "Enterprise integrations (LLM Integration, Bitrix24, REST APIs)",
+      name: "Enterprise integrations (AI powered Solutions, Bitrix24, SAP Integration, REST APIs)",
       icon: "world",
       description:
-        "Integrate LLM, Bitrix24, REST APIs, and other enterprise systems.",
+        "Integrate AI powered solutions, Bitrix24, SAP Integration  , REST APIs, and other enterprise systems.",
     },
     {
-      name: "Fullstack development (React, Node.js, PHP, TypeScript)",
+      name: "Fullstack modern development (React, Node.js, PHP, TypeScript, Python)",
       icon: "desktop",
       description:
         "End-to-end development across React, Node.js, PHP, and TypeScript.",
     },
     {
-      name: "Team leadership and cross-functional collaboration",
+      name: "Project Management and Delivery",
       icon: "users",
       description:
-        "Lead delivery with stakeholders across engineering, product, and business teams.",
+        "Lead delivery with stakeholders across engineering, product, and business teams. Project Management and Delivery.",
     },
   ],
   interests: ["Programming", "Robotics", "Games", "Design"],
@@ -530,16 +530,16 @@ export const portfolioData: PortfolioData = {
   testimonials: [
     {
       id: "dummy-1",
-      name: "Andi Pratama",
-      role: "IT Project Manager",
-      company: "Behn Meyer Group",
+      name: "Yohan Paulus",
+      role: "IT Manager",
+      company: "PT Kaldu Sari Nabati Indonesia",
       relationship: "Managed Ogi directly",
       quote:
         "Ogi consistently delivers solid full-stack solutions—from Laravel backends to clean frontends. He translates complex business needs into clear technical plans and ships on time. His work on our regional web apps, including SAP integrations, made a real impact on day-to-day operations.",
     },
     {
       id: "dummy-2",
-      name: "Siti Rahmawati",
+      name: "Hendik Ariyanto",
       role: "Business Analyst",
       company: "Maha Chemicals",
       relationship: "Worked with Ogi on the same team",
@@ -548,7 +548,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "dummy-3",
-      name: "Budi Santoso",
+      name: "Sendy Andika",
       role: "Freelance Client",
       company: "Independent Project",
       relationship: "Hired Ogi as a freelancer",
