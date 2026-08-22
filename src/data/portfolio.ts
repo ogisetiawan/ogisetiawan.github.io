@@ -112,6 +112,8 @@ export interface Project {
   category: string;
   image: ImageMetadata;
   description: string;
+  /** Short callouts for featured/large cards — distilled from description */
+  highlights?: string[];
   features: string[];
   technologies: string[];
   url: string | null;
@@ -722,6 +724,11 @@ export const portfolioData: PortfolioData = {
       image: webHitsrecordsImg,
       description:
         "Developed a Website Content Management System for Hitsrecords (POP Genre) and SwaraBintang (Dangdut Genre), members of the MNC Groups.",
+      highlights: [
+        "CMS for two MNC music labels — Hitsrecords (POP) and SwaraBintang (Dangdut)",
+        "Clean, responsive UI with server-side rendering",
+        "Multi-level login and Facebook Comments integration",
+      ],
       features: [
         "Clean and Responsive Design",
         "Server-side Rendering",
@@ -1018,7 +1025,13 @@ export const portfolioData: PortfolioData = {
       shortTitle: "Starhits.id",
       category: "Web Application",
       image: webStarhitsImg,
-      description: "The platform serves as a centralized digital ecosystem for presenting StarHits' business services, creator and influencer networks, production capabilities, digital campaign portfolios, corporate information, and media content.Key areas of the platform include Multi-Channel Network (MCN) services, influencer management, creative digital campaigns, video and design production services, news and content publishing, user authentication, and business project submission.The development focused on building a responsive, structured, and scalable web platform capable of managing dynamic content while providing an accessible experience for creators, brands, business partners, and general visitors.",
+      description:
+        "Centralized digital ecosystem for StarHits business services, creator networks, production capabilities, campaigns, and media content.",
+      highlights: [
+        "MCN services, influencer management, and creative digital campaigns",
+        "News publishing, authentication, and business project submission",
+        "Responsive, structured platform for creators, brands, and partners",
+      ],
       features: [
         "Clean and Responsive Design",
         "Server side rendering",
@@ -1067,7 +1080,14 @@ export const portfolioData: PortfolioData = {
       shortTitle: "Account Switcher",
       category: "Extension",
       image: webAccountSwitcherImg,
-      description: "A privacy-focused browser extension that enables users to save and switch between multiple authenticated website sessions without repeatedly logging out and logging back in. The extension captures and manages session states including cookies, localStorage, and sessionStorage, allowing users to switch between different accounts or user roles with a single action. It is particularly useful for UAT and QA testing, multi-account SaaS workflows, client demonstrations, technical support, and development environments where multiple user personas need to be tested efficiently.Built with TypeScript, JavaScript, HTML, CSS, and Manifest V3, with cross-browser support for Chrome and Firefox. Session data is stored locally using browser storage without requiring a backend service or cloud synchronization.The project also includes browser-specific build processes using esbuild, local session management, automatic session synchronization, and a privacy-first architecture designed to keep authentication data on the user's device.",
+      description:
+        "A privacy-focused browser extension that lets users save and switch between multiple authenticated website sessions without logging out and back in.",
+      highlights: [
+        "Captures cookies, localStorage, and sessionStorage for one-click account switching",
+        "Built for UAT/QA, multi-account SaaS, client demos, and support workflows",
+        "Privacy-first architecture — session data stays local, no backend or cloud sync",
+        "Chrome & Firefox support with Manifest V3, TypeScript, and esbuild",
+      ],
       features: [
         "Multiple Accounts Sessions Management",
         "Import/Export Sessions ",
