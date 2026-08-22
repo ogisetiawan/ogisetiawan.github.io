@@ -3,6 +3,7 @@ import "../../styles/global.css";
 import { portfolioData as portfolio } from "../../data/portfolio";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
+import JsonLd from "../seo/JsonLd.astro";
 
 interface Props {
   title?: string;
@@ -102,6 +103,19 @@ const robots = noindex ? "noindex, nofollow" : "index, follow";
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={`${displayName} — ${portfolio.profile.title}`} />
+
+    {
+      !noindex && (
+        <JsonLd
+          title={title}
+          description={description}
+          canonicalURL={canonicalURL}
+          ogImage={ogImage}
+          siteOrigin={siteOrigin}
+          displayName={displayName}
+        />
+      )
+    }
 
     <!-- Prevent theme flash: apply stored/system preference before paint -->
     <script is:inline>
