@@ -1,7 +1,10 @@
 ---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 import { portfolioData as portfolio } from "../../data/portfolio";
 import { ArrowUpRight } from "@lucide/astro";
 import SkeletonOverlay from "../ui/SkeletonOverlay.astro";
+import { domainLogos, googleIconDataUri } from "../../lib/brandLogos";
 
 const LINKEDIN_CERTS =
   "https://www.linkedin.com/in/ogi-setiawan-software-engineer/details/certifications/";
@@ -13,25 +16,27 @@ const featured = portfolio.certifications
   .slice(0, 4);
 
 interface IssuerMark {
-  src: string;
+  /** Either a data URI / string src, or a bundled image to optimize. */
+  src?: string;
+  image?: ImageMetadata;
   bg: string;
 }
 
 const ISSUER_MARKS: Record<string, IssuerMark> = {
   Google: {
-    src: "https://cdn.simpleicons.org/google",
+    src: googleIconDataUri,
     bg: "bg-white dark:bg-white",
   },
   "Dicoding Indonesia": {
-    src: "https://www.google.com/s2/favicons?domain=dicoding.com&sz=256",
+    image: domainLogos["dicoding.com"],
     bg: "bg-white dark:bg-white",
   },
   "AWS AI Academy": {
-    src: "https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=256",
+    image: domainLogos["aws.amazon.com"],
     bg: "bg-white dark:bg-white",
   },
   "PT. Babastudio": {
-    src: "https://www.google.com/s2/favicons?domain=babastudio.com&sz=256",
+    image: domainLogos["babastudio.com"],
     bg: "bg-white dark:bg-white",
   },
 };
@@ -54,7 +59,7 @@ const MONTHS: Record<string, string> = {
 function issuerMark(issuer: string): IssuerMark {
   return (
     ISSUER_MARKS[issuer] ?? {
-      src: `https://www.google.com/s2/favicons?domain=${encodeURIComponent(issuer)}&sz=256`,
+      src: googleIconDataUri,
       bg: "bg-white dark:bg-white",
     }
   );
@@ -114,22 +119,34 @@ function formatCertDate(date: string): { label: string; datetime: string } {
           >
             <SkeletonOverlay variant="cert" />
             <div class="mb-3 flex items-center justify-between gap-2">
-              <span
-                class:list={[
-                  "flex h-11 w-11 flex-none items-center justify-center overflow-hidden rounded-lg border border-gray-200 p-1.5 dark:border-gray-600",
-                  mark.bg,
-                ]}
-              >
-                <img
-                  src={mark.src}
-                  alt={`${cert.issuer} logo`}
-                  width={32}
-                  height={32}
-                  class="h-8 w-8 object-contain"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </span>
+                <span
+                  class:list={[
+                    "flex h-11 w-11 flex-none items-center justify-center overflow-hidden rounded-lg border border-gray-200 p-1.5 dark:border-gray-600",
+                    mark.bg,
+                  ]}
+                >
+                  {mark.image ? (
+                    <Image
+                      src={mark.image}
+                      alt={`${cert.issuer} logo`}
+                      width={32}
+                      height={32}
+                      class="h-8 w-8 object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <img
+                      src={mark.src}
+                      alt={`${cert.issuer} logo`}
+                      width={32}
+                      height={32}
+                      class="h-8 w-8 object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
+                </span>
               <time
                 datetime={datetime}
                 class="rounded-md bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-700 dark:bg-blue-950/50 dark:text-blue-300"

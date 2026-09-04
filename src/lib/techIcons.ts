@@ -1,3 +1,9 @@
+import * as simpleIcons from "simple-icons";
+// Self-hosted multi-color brand marks not available in simple-icons (devicon).
+// Imported as raw SVG and inlined at build — no cdn.jsdelivr.net request.
+import awsSvg from "../assets/icons/amazonwebservices.svg?raw";
+import sqlServerSvg from "../assets/icons/microsoftsqlserver.svg?raw";
+
 export interface ToolIcon {
   slug: string;
   label: string;
@@ -6,8 +12,13 @@ export interface ToolIcon {
   src?: string;
 }
 
-const DEVICON =
-  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons";
+/** Inline a raw SVG string as a data URI (self-contained, no network). */
+function svgToDataUri(svg: string): string {
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+}
+
+const AWS_ICON = svgToDataUri(awsSvg);
+const SQL_SERVER_ICON = svgToDataUri(sqlServerSvg);
 
 /** Match longer / more specific names first */
 export const TOOL_CATALOG: { test: RegExp; icon: ToolIcon }[] = [
@@ -33,7 +44,7 @@ export const TOOL_CATALOG: { test: RegExp; icon: ToolIcon }[] = [
     icon: {
       slug: "microsoftsqlserver",
       label: "SQL Server",
-      src: `${DEVICON}/microsoftsqlserver/microsoftsqlserver-plain.svg`,
+      src: SQL_SERVER_ICON,
     },
   },
   { test: /mariadb/i, icon: { slug: "mariadb", label: "MariaDB" } },
@@ -56,7 +67,7 @@ export const TOOL_CATALOG: { test: RegExp; icon: ToolIcon }[] = [
     icon: {
       slug: "amazonwebservices",
       label: "AWS",
-      src: `${DEVICON}/amazonwebservices/amazonwebservices-plain-wordmark.svg`,
+      src: AWS_ICON,
     },
   },
   { test: /linux/i, icon: { slug: "linux", label: "Linux" } },
@@ -75,8 +86,38 @@ export const TOOL_CATALOG: { test: RegExp; icon: ToolIcon }[] = [
   { test: /firefox/i, icon: { slug: "firefoxbrowser", label: "Firefox" } },
 ];
 
+interface SimpleIcon {
+  slug: string;
+  hex: string;
+  path: string;
+}
+
+/** simple-icons export name, e.g. "react" → "siReact", "html5" → "siHtml5". */
+function siExportName(slug: string): string {
+  return `si${slug.charAt(0).toUpperCase()}${slug.slice(1)}`;
+}
+
+/** Build a self-contained (no network) data URI from a simple-icons brand path. */
+function toDataUri(icon: SimpleIcon): string {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#${icon.hex}"><path d="${icon.path}"/></svg>`;
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+}
+
+/**
+ * Resolve an icon's image source at build time.
+ * - Devicon overrides (multi-color) keep their `src`.
+ * - Everything else is inlined from the local `simple-icons` package as a data
+ *   URI, so there is no request to cdn.simpleicons.org (no cache-lifetime issue,
+ *   no extra network dependency).
+ */
 export function iconSrc(tool: ToolIcon): string {
-  return tool.src ?? `https://cdn.simpleicons.org/${tool.slug}`;
+  if (tool.src) return tool.src;
+  const icon = (simpleIcons as Record<string, SimpleIcon | undefined>)[
+    siExportName(tool.slug)
+  ];
+  if (icon?.path) return toDataUri(icon);
+  // Fallback (should not happen for slugs in this catalog)
+  return `https://cdn.simpleicons.org/${tool.slug}`;
 }
 
 /** Resolve one technology string to a brand icon (keeps original label). */

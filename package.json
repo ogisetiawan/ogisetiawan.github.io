@@ -16,6 +16,7 @@
     "@lucide/astro": "^1.28.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.1.1",
+    "simple-icons": "^16.29.0",
     "tailwindcss": "^4.3.3"
   }
 }
