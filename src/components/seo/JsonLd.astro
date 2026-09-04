@@ -1,112 +1,71 @@
 ---
-import { portfolioData as portfolio } from "../../data/portfolio";
-
-interface Props {
-  title: string;
-  description: string;
-  canonicalURL: URL;
-  ogImage: URL;
-  siteOrigin: URL;
-  displayName: string;
-}
-
-const { title, description, canonicalURL, ogImage, siteOrigin, displayName } =
-  Astro.props;
-
-const siteUrl = siteOrigin.href.replace(/\/$/, "");
-const personId = `${siteUrl}/#person`;
-const websiteId = `${siteUrl}/#website`;
-const profilePageId = `${canonicalURL.href.replace(/\/$/, "")}/#profilepage`;
-
-const currentJob = portfolio.experience.find((job) => job.current);
-const sameAs = portfolio.social.map((item) => item.url);
-
-const alumniOf = portfolio.education.map((edu) => ({
-  "@type": "EducationalOrganization",
-  name: edu.institution,
-}));
-
-const hasCredential = portfolio.certifications.slice(0, 6).map((cert) => ({
-  "@type": "EducationalOccupationalCredential",
-  name: cert.name,
-  credentialCategory: "Certificate",
-  recognizedBy: {
-    "@type": "Organization",
-    name: cert.issuer,
-  },
-}));
+/**
+ * GEO-oriented Knowledge Graph JSON-LD
+ * Person ↔ WebSite ↔ WebPage via connected @id references
+ */
+const SITE = "https://ogisetiawan.my.id";
+const PERSON_ID = `${SITE}/#about`;
+const WEBSITE_ID = `${SITE}/#website`;
+const WEBPAGE_ID = `${SITE}/`;
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "WebSite",
-      "@id": websiteId,
-      url: `${siteUrl}/`,
-      name: `${displayName} Portfolio`,
-      description: portfolio.profile.about,
-      inLanguage: "en",
-      publisher: { "@id": personId },
-      author: { "@id": personId },
-    },
-    {
       "@type": "Person",
-      "@id": personId,
-      name: displayName,
-      url: `${siteUrl}/`,
-      image: {
-        "@type": "ImageObject",
-        url: ogImage.href,
-        width: 612,
-        height: 408,
-        caption: `${displayName} — ${portfolio.profile.title}`,
+      "@id": PERSON_ID,
+      name: "Ogi Setiawan",
+      jobTitle: "Regional Web Developer",
+      description:
+        "Fullstack Developer specializing in enterprise web applications, AI workflow automation, and legacy system modernization.",
+      url: SITE,
+      image: `${SITE}/og-image.png`,
+      worksFor: {
+        "@type": "Organization",
+        name: "Behn Meyer Group",
       },
-      jobTitle: portfolio.profile.title,
-      description: portfolio.profile.about,
-      email: portfolio.contact.email,
-      telephone: portfolio.contact.phone,
       address: {
         "@type": "PostalAddress",
         addressLocality: "South Tangerang",
         addressRegion: "Banten",
         addressCountry: "ID",
       },
-      nationality: {
-        "@type": "Country",
-        name: "Indonesia",
-      },
-      knowsAbout: [
-        ...new Set([
-          ...portfolio.profile.roles,
-          ...portfolio.skills.programming.map((skill) => skill.name),
-        ]),
+      sameAs: [
+        "https://www.linkedin.com/in/ogi-setiawan-software-engineer/",
+        "https://github.com/ogisetiawan",
+        "https://dev.to/ogisetiawan",
       ],
-      sameAs,
-      alumniOf,
-      hasCredential,
-      ...(currentJob
-        ? {
-            worksFor: {
-              "@type": "Organization",
-              name: currentJob.company,
-            },
-          }
-        : {}),
+      knowsAbout: [
+        "Web Development",
+        "Enterprise Systems",
+        "AI Automation",
+        "React",
+        "Node.js",
+        "PHP",
+        "SAP Integration",
+        "Astro",
+        "TypeScript",
+      ],
     },
     {
-      "@type": "ProfilePage",
-      "@id": profilePageId,
-      url: canonicalURL.href,
-      name: title,
-      description,
-      inLanguage: "en",
-      isPartOf: { "@id": websiteId },
-      about: { "@id": personId },
-      mainEntity: { "@id": personId },
-      primaryImageOfPage: {
-        "@type": "ImageObject",
-        url: ogImage.href,
-      },
+      "@type": "WebSite",
+      "@id": WEBSITE_ID,
+      url: SITE,
+      name: "Ogi Setiawan Portfolio",
+      description:
+        "The official portfolio of Ogi Setiawan, showcasing enterprise web projects and technical expertise.",
+      publisher: { "@id": PERSON_ID },
+      inLanguage: "id-ID",
+    },
+    {
+      "@type": "WebPage",
+      "@id": WEBPAGE_ID,
+      url: SITE,
+      name: "Ogi Setiawan - Regional Web Developer & Fullstack Engineer",
+      isPartOf: { "@id": WEBSITE_ID },
+      about: { "@id": PERSON_ID },
+      datePublished: "2026-08-01",
+      dateModified: "2026-09-04",
     },
   ],
 };

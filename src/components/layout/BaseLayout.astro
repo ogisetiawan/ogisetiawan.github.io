@@ -104,16 +104,7 @@ const robots = noindex ? "noindex, nofollow" : "index, follow";
     <meta name="twitter:image:alt" content={`${displayName} — ${portfolio.profile.title}`} />
 
     {
-      !noindex && (
-        <JsonLd
-          title={title}
-          description={description}
-          canonicalURL={canonicalURL}
-          ogImage={ogImage}
-          siteOrigin={siteOrigin}
-          displayName={displayName}
-        />
-      )
+      !noindex && <JsonLd />
     }
 
     <!-- Prevent theme flash: apply stored/system preference before paint -->

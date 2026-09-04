@@ -1,3 +1,4 @@
+# Regular crawlers
 User-agent: *
 Allow: /
 
@@ -38,4 +39,4 @@ Allow: /
 User-agent: meta-externalagent
 Allow: /
 
-Sitemap: https://ogisetiawan.my.id/sitemap-index.xml
+Sitemap: https://ogisetiawan.my.id/sitemap.xml
