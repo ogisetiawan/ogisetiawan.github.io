@@ -6,6 +6,9 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://ogisetiawan.my.id',
+  integrations: [
+    sitemap(),
+  ],
   build: {
     // Inline CSS straight into the HTML <style> to remove the render-blocking
     // stylesheet request from the critical network path. This is a small static
@@ -13,9 +16,6 @@ export default defineConfig({
     // Use 'auto' instead if the CSS grows large (only inlines chunks < 4KB).
     inlineStylesheets: 'always',
   },
-  integrations: [
-    sitemap(),
-  ],
   image: {
     // Local assets via <Image>/<Picture> → WebP by default (Sharp)
     service: {
