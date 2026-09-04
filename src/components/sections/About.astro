@@ -4,7 +4,17 @@ import { portfolioData as portfolio } from "../../data/portfolio";
 
 const { profile, services, social } = portfolio;
 
-const intro = profile.about.split(/(?<=\.)\s+/).slice(0, 2).join(" ");
+const displayName = profile.name.replace(/^I'm\s+/i, "").trim();
+const yearsExperience = Math.max(
+  1,
+  Math.floor(
+    (Date.now() - new Date(profile.experienceStartDate).getTime()) /
+      (365.25 * 24 * 60 * 60 * 1000)
+  )
+);
+
+/** GEO: first sentence uses the entity name (not "I") for easier citation. */
+const definitiveIntro = `${displayName} is a Full stack Software Engineer with over ${yearsExperience}+ years of experience building enterprise web applications and AI-powered automation solutions.`;
 
 const socialIcons: Record<string, string> = {
   linkedin:
@@ -19,9 +29,17 @@ const socialIcons: Record<string, string> = {
 };
 ---
 
-<section id="about" class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8" data-reveal>
+<section
+  id="about"
+  class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8"
+  aria-labelledby="about-heading"
+  data-reveal
+>
   <div class="mb-12 text-center">
-    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+    <h2
+      id="about-heading"
+      class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
+    >
       About Me
     </h2>
     <p class="mt-4 text-base text-gray-600 dark:text-gray-400">
@@ -30,7 +48,6 @@ const socialIcons: Record<string, string> = {
   </div>
 
   <div class="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-10">
-    <!-- Left: portrait + accent circle -->
     <div class="lg:col-span-6">
       <div class="relative mx-auto h-full min-h-[18rem] w-full max-w-lg lg:max-w-none">
         <div
@@ -40,7 +57,7 @@ const socialIcons: Record<string, string> = {
         </div>
         <OptimizedImage
           src={profile.images.profile}
-          alt={`Portrait of ${profile.name}`}
+          alt={`Portrait of ${displayName}, Regional Web Developer`}
           loading="eager"
           fetchpriority="high"
           class="relative z-10 h-full w-full object-contain object-right drop-shadow-[0_16px_28px_rgb(0_0_0_/_0.28)]"
@@ -48,10 +65,9 @@ const socialIcons: Record<string, string> = {
       </div>
     </div>
 
-    <!-- Right: copy -->
     <div class="flex flex-col justify-center lg:col-span-6">
       <p class="text-base leading-relaxed text-gray-600 dark:text-gray-400">
-        {intro}
+        {definitiveIntro}
       </p>
       <p class="mt-4 text-base leading-relaxed text-gray-600 dark:text-gray-400">
         {profile.about2}

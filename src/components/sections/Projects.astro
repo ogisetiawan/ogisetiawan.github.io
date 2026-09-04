@@ -17,11 +17,33 @@ const heroTechs = resolveProjectTechs(hero.technologies, 5);
 
 const featuredIds = new Set<string>(featuredProjectOrder);
 const otherProjects = portfolio.projects.filter((p) => !featuredIds.has(p.id));
+
+/** Descriptive alt text for GEO / accessibility (tech + context, not "Project 1"). */
+function projectImageAlt(project: (typeof featured)[number]): string {
+  const techs = project.technologies
+    .filter((t) => !/^(GIT|AJAX|PJAX|HTML|CSS|JavaScript|Javascript)$/i.test(t))
+    .slice(0, 3);
+  const techPhrase =
+    techs.length === 0
+      ? project.category
+      : techs.length === 1
+        ? techs[0]
+        : techs.length === 2
+          ? `${techs[0]} and ${techs[1]}`
+          : `${techs[0]}, ${techs[1]}, and ${techs[2]}`;
+  return `${project.title} — ${project.category} built with ${techPhrase}`;
+}
 ---
 
-<section id="projects" class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8" data-reveal>
+<section
+  id="projects"
+  class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8"
+  aria-labelledby="projects-heading"
+  data-reveal
+>
   <div class="mb-12 text-center">
     <h2
+      id="projects-heading"
       class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
     >
       Featured Projects
@@ -50,7 +72,7 @@ const otherProjects = portfolio.projects.filter((p) => !featuredIds.has(p.id));
         <div class="relative aspect-[16/9] overflow-hidden bg-gray-100 dark:bg-gray-900">
           <OptimizedImage
             src={hero.image}
-            alt={`Screenshot of ${hero.title}`}
+            alt={projectImageAlt(hero)}
             width={1200}
             height={675}
             loading="eager"
@@ -141,7 +163,7 @@ const otherProjects = portfolio.projects.filter((p) => !featuredIds.has(p.id));
             <div class="relative aspect-[16/9] overflow-hidden bg-gray-100 dark:bg-gray-900">
               <OptimizedImage
                 src={project.image}
-                alt={`Screenshot of ${project.title}`}
+                alt={projectImageAlt(project)}
                 width={600}
                 height={338}
                 loading="lazy"

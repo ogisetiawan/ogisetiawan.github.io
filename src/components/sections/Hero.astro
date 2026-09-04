@@ -19,11 +19,15 @@ const stats = [
 ];
 
 const currentJob = experience.find((job) => job.current);
+const displayName = profile.name.replace(/^I'm\s+/i, "").trim();
 ---
 
 <section
   id="home"
   class="relative flex min-h-[85vh] items-center overflow-hidden"
+  aria-labelledby="hero-heading"
+  itemscope
+  itemtype="https://schema.org/Person"
   data-reveal
 >
   <!-- Atmosphere -->
@@ -54,9 +58,10 @@ const currentJob = experience.find((job) => job.current);
     }
 
     <h1
+      id="hero-heading"
       class="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight text-gray-900 sm:text-5xl lg:text-6xl dark:text-white"
     >
-      {profile.name}
+      <span itemprop="name">{displayName}</span>
       <span class="mt-2 block text-blue-600 dark:text-blue-400">
         {profile.heroText}
       </span>
@@ -65,7 +70,7 @@ const currentJob = experience.find((job) => job.current);
     <p
       class="mt-5 flex h-7 items-center justify-center text-lg font-semibold text-gray-700 sm:text-xl dark:text-gray-200"
     >
-      <span class="sr-only">{profile.roles.join(", ")}</span>
+      <span class="sr-only" itemprop="jobTitle">{profile.title}</span>
       <span aria-hidden="true">
         <span id="hero-role">{profile.roles[0]}</span><span
           id="hero-role-caret"
