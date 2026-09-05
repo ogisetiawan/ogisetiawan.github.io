@@ -1,5 +1,6 @@
 ---
 import { portfolioData as portfolio } from "../../data/portfolio";
+import SectionHeading from "../ui/SectionHeading.astro";
 
 const { testimonials } = portfolio;
 
@@ -14,14 +15,11 @@ function initials(name: string): string {
 ---
 
 <section id="testimonials" class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8" aria-labelledby="testimonials-heading" data-reveal>
-  <div class="mb-12 text-center">
-    <h2 id="testimonials-heading" class="text-3xl font-heading font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-      Testimonials
-    </h2>
-    <p class="mt-4 text-base text-gray-600 dark:text-gray-400">
-      Feedback from colleagues and clients on working with me.
-    </p>
-  </div>
+  <SectionHeading
+    id="testimonials-heading"
+    title="Testimonials"
+    subtitle="Feedback from colleagues and clients on working with me."
+  />
 
   <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
     {

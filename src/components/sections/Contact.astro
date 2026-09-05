@@ -1,6 +1,7 @@
 ---
 import { Mail } from "@lucide/astro";
 import { portfolioData as portfolio } from "../../data/portfolio";
+import SectionHeading from "../ui/SectionHeading.astro";
 
 const { contact } = portfolio;
 
@@ -10,12 +11,12 @@ const whatsappUrl = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent
 ---
 
 <section id="contact" class="mx-auto max-w-2xl px-4 py-20 text-center sm:px-6 lg:px-8" aria-labelledby="contact-heading" data-reveal>
-  <h2 id="contact-heading" class="text-3xl font-heading font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-    Get in Touch
-  </h2>
-  <p class="mx-auto mt-4 max-w-md text-base text-gray-600 dark:text-gray-400">
-    Have a project in mind? Email me or chat on WhatsApp — I usually reply within a day.
-  </p>
+  <SectionHeading
+    id="contact-heading"
+    title="Get in Touch"
+    subtitle="Have a project in mind? Email me or chat on WhatsApp — I usually reply within a day."
+    class="mb-0 text-center"
+  />
 
   <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
     <a

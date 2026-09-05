@@ -1,5 +1,6 @@
 ---
 import OptimizedImage from "../ui/OptimizedImage.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
 import { portfolioData as portfolio } from "../../data/portfolio";
 
 const { profile, services, social } = portfolio;
@@ -35,17 +36,11 @@ const socialIcons: Record<string, string> = {
   aria-labelledby="about-heading"
   data-reveal
 >
-  <div class="mb-12 text-center">
-    <h2
-      id="about-heading"
-      class="text-3xl font-heading font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
-    >
-      About Me
-    </h2>
-    <p class="mt-4 text-base text-gray-600 dark:text-gray-400">
-      Get to know who I am and what I can do for your team
-    </p>
-  </div>
+  <SectionHeading
+    id="about-heading"
+    title="About Me"
+    subtitle="Get to know who I am and what I can do for your team"
+  />
 
   <div class="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-10">
     <div class="lg:col-span-6">

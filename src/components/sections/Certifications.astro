@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import { portfolioData as portfolio } from "../../data/portfolio";
 import { ArrowUpRight } from "@lucide/astro";
 import SkeletonOverlay from "../ui/SkeletonOverlay.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
 import { domainLogos, googleIconDataUri } from "../../lib/brandLogos";
 
 const LINKEDIN_CERTS =
@@ -92,14 +93,11 @@ function formatCertDate(date: string): { label: string; datetime: string } {
 ---
 
 <section id="certifications" class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8" aria-labelledby="certifications-heading" data-reveal>
-  <div class="mb-12 text-center">
-    <h2 id="certifications-heading" class="text-3xl font-heading font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-      Certifications
-    </h2>
-    <p class="mt-4 text-base text-gray-600 dark:text-gray-400">
-      Selected credentials that matter most.
-    </p>
-  </div>
+  <SectionHeading
+    id="certifications-heading"
+    title="Certifications"
+    subtitle="Selected credentials that matter most."
+  />
 
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
     {

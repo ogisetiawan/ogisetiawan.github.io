@@ -1,0 +1,73 @@
+---
+import CurvedArrow from "./CurvedArrow.astro";
+
+interface Props {
+  id: string;
+  level?: 2 | 3;
+  title: string;
+  subtitle?: string;
+  class?: string;
+  align?: "center" | "start";
+}
+
+const {
+  id,
+  level = 2,
+  title,
+  subtitle,
+  class: className,
+  align = "center",
+} = Astro.props;
+
+const Tag = level === 3 ? "h3" : "h2";
+
+const headingClass =
+  level === 3
+    ? "text-xl font-heading font-semibold tracking-tight text-gray-900 dark:text-white"
+    : "text-3xl font-heading font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white";
+
+const wrapperClass =
+  className ?? (level === 3 ? "mb-8" : "mb-12 text-center");
+
+const arrowClass = [
+  level === 3 ? "mt-0.5 h-5 w-11" : "mt-1 h-7 w-14 sm:h-8 sm:w-16",
+  align === "start" ? "ml-0.5" : "",
+  "-rotate-6",
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<div
+  class:list={[
+    wrapperClass,
+    align === "center" && level === 2 && "text-center",
+  ]}
+>
+  <div
+    class:list={[
+      "relative inline-flex flex-col",
+      align === "center" ? "items-center" : "items-start",
+    ]}
+  >
+    <div class="inline-flex items-center gap-2">
+      <slot name="icon" />
+      <Tag id={id} class={headingClass}>{title}</Tag>
+    </div>
+    <CurvedArrow class={arrowClass} />
+  </div>
+  {
+    subtitle && (
+      <p
+        class:list={[
+          "text-base text-gray-600 dark:text-gray-400",
+          level === 2 ? "mt-4" : "mt-2",
+          align === "center" && "mx-auto max-w-md",
+        ]}
+      >
+        {subtitle}
+      </p>
+    )
+  }
+  <slot />
+</div>

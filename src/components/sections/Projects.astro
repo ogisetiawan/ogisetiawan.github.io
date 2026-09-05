@@ -1,5 +1,6 @@
 ---
 import OptimizedImage from "../ui/OptimizedImage.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
 import { portfolioData as portfolio, featuredProjectOrder } from "../../data/portfolio";
 import { ArrowUpRight, X, LayoutGrid } from "@lucide/astro";
 import SkeletonOverlay from "../ui/SkeletonOverlay.astro";
@@ -41,17 +42,11 @@ function projectImageAlt(project: (typeof featured)[number]): string {
   aria-labelledby="projects-heading"
   data-reveal
 >
-  <div class="mb-12 text-center">
-    <h2
-      id="projects-heading"
-      class="text-3xl font-heading font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
-    >
-      Featured Projects
-    </h2>
-    <p class="mt-4 text-base text-gray-600 dark:text-gray-400">
-      A selection of my best work — the rest is just one click away.
-    </p>
-  </div>
+  <SectionHeading
+    id="projects-heading"
+    title="Featured Projects"
+    subtitle="A selection of my best work — the rest is just one click away."
+  />
 
   <!-- Bento grid: 1 large + 2 medium -->
   <div class="grid grid-cols-1 gap-5 lg:grid-cols-3">
