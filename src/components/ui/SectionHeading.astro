@@ -8,6 +8,8 @@ interface Props {
   subtitle?: string;
   class?: string;
   align?: "center" | "start";
+  /** Decorative curved accent arrow under the title (default true) */
+  showArrow?: boolean;
 }
 
 const {
@@ -17,6 +19,7 @@ const {
   subtitle,
   class: className,
   align = "center",
+  showArrow = true,
 } = Astro.props;
 
 const Tag = level === 3 ? "h3" : "h2";
@@ -54,7 +57,7 @@ const arrowClass = [
       <slot name="icon" />
       <Tag id={id} class={headingClass}>{title}</Tag>
     </div>
-    <CurvedArrow class={arrowClass} />
+    {showArrow && <CurvedArrow class={arrowClass} />}
   </div>
   {
     subtitle && (

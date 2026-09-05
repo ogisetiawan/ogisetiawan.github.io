@@ -1,9 +1,9 @@
 /**
- * Brand color palette for ogisetiawan.github.io
- * (legacy dark theme: #26262d + lime accent #a7d129)
+ * Brand tokens for ogisetiawan.github.io
  *
- * Tailwind v4 applies these via @theme in src/styles/global.css.
- * Keep both files in sync when changing tokens.
+ * Fonts: Astro Fonts API → CSS vars (--font-fraunces, --font-body, --font-mono)
+ * wired in src/styles/global.css via @theme inline.
+ * Colors: also defined in global.css @theme.
  *
  * @type {import('tailwindcss').Config}
  */
@@ -11,19 +11,17 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', "Inter", "sans-serif"],
-        heading: ['"Plus Jakarta Sans"', "sans-serif"],
-        mono: ['"JetBrains Mono"', "monospace"],
+        sans: ["var(--font-body)", "ui-sans-serif", "system-ui", "sans-serif"],
+        heading: ["var(--font-body)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--font-fraunces)", "ui-serif", "Georgia", "serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       colors: {
-        // Dark canvas (legacy dark.css)
         background: "#26262d",
         surface: "#31313a",
         border: "#3e4148",
-        // Light canvas — soft sage undertone for accent #a7d129
         page: "#f4f5ef",
         elevated: "#fafbf6",
-        // Brand lime (legacy green.css)
         accent: {
           DEFAULT: "#a7d129",
           50: "#f4fbe6",
@@ -39,7 +37,6 @@ export default {
           950: "#2a360a",
         },
       },
-      // gray-50/100/800/900 remapped in src/styles/global.css @theme
     },
   },
 };

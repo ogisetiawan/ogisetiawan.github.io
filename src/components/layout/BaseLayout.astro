@@ -1,4 +1,5 @@
 ---
+import { Font } from "astro:assets";
 import "../../styles/global.css";
 import { portfolioData as portfolio } from "../../data/portfolio";
 import Header from "./Header.astro";
@@ -107,6 +108,11 @@ const robots = noindex ? "noindex, nofollow" : "index, follow";
     {
       !noindex && <JsonLd />
     }
+
+    <!-- Astro Fonts API — preload above-the-fold (Hero Fraunces + body) -->
+    <Font cssVariable="--font-fraunces" preload />
+    <Font cssVariable="--font-body" preload />
+    <Font cssVariable="--font-mono" />
 
     <!-- Prevent theme flash: apply stored/system preference before paint -->
     <script is:inline>
