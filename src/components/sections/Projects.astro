@@ -44,7 +44,7 @@ function projectImageAlt(project: (typeof featured)[number]): string {
   <div class="mb-12 text-center">
     <h2
       id="projects-heading"
-      class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
+      class="text-3xl font-heading font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
     >
       Featured Projects
     </h2>
@@ -90,11 +90,11 @@ function projectImageAlt(project: (typeof featured)[number]): string {
         <div class="flex flex-1 flex-col gap-4 p-6 sm:p-7">
           <div>
             <span
-              class="mb-2 inline-block text-xs font-semibold uppercase tracking-wider text-accent-600 dark:text-accent-400"
+              class="mb-2 inline-block font-mono text-xs font-semibold uppercase tracking-wider text-accent-600 dark:text-accent-400"
             >
               {hero.category}
             </span>
-            <h3 class="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl dark:text-white">
+            <h3 class="text-xl font-heading font-semibold tracking-tight text-gray-900 sm:text-2xl dark:text-white">
               {hero.title}
             </h3>
             <p class="mt-3 max-w-prose text-sm leading-relaxed text-gray-600 sm:text-[15px] dark:text-gray-300">
@@ -121,7 +121,7 @@ function projectImageAlt(project: (typeof featured)[number]): string {
           <ul class="mt-auto flex flex-wrap gap-2 pt-1" aria-label="Tech stack">
             {
               heroTechs.map(({ label, icon }) => (
-                <li class="inline-flex items-center gap-1.5 rounded-md border border-gray-200 bg-gray-50 px-2.5 py-1.5 text-xs font-medium text-gray-700 dark:border-gray-600 dark:bg-gray-900/40 dark:text-gray-200">
+                <li class="inline-flex items-center gap-1.5 rounded-md border border-gray-200 bg-gray-50 px-2.5 py-1.5 font-mono text-xs font-medium text-gray-700 dark:border-gray-600 dark:bg-gray-900/40 dark:text-gray-200">
                   {icon && (
                     <img
                       src={iconSrc(icon)}
@@ -176,7 +176,7 @@ function projectImageAlt(project: (typeof featured)[number]): string {
               )}
             </div>
             <div class="flex flex-1 flex-col p-5">
-              <h3 class="text-base font-bold leading-snug text-gray-900 dark:text-white">
+              <h3 class="text-base font-heading font-semibold leading-snug tracking-tight text-gray-900 dark:text-white">
                 {project.shortTitle}
               </h3>
               <p class="mt-1.5 line-clamp-2 flex-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
@@ -184,7 +184,7 @@ function projectImageAlt(project: (typeof featured)[number]): string {
               </p>
               <ul class="mt-3 flex flex-wrap gap-1.5" aria-label="Tech stack">
                 {resolveProjectTechs(project.technologies, 3).map(({ label, icon }) => (
-                  <li class="inline-flex items-center gap-1.5 rounded-md border border-gray-200 bg-gray-50 px-2 py-1 text-[11px] font-medium text-gray-600 dark:border-gray-600 dark:bg-gray-900/40 dark:text-gray-300">
+                  <li class="inline-flex items-center gap-1.5 rounded-md border border-gray-200 bg-gray-50 px-2 py-1 font-mono text-[11px] font-medium text-gray-600 dark:border-gray-600 dark:bg-gray-900/40 dark:text-gray-300">
                     {icon && (
                       <img
                         src={iconSrc(icon)}
@@ -232,7 +232,7 @@ function projectImageAlt(project: (typeof featured)[number]): string {
     >
       <h3
         id="projects-modal-title"
-        class="text-lg font-bold text-gray-900 dark:text-white"
+        class="text-lg font-heading font-semibold tracking-tight text-gray-900 dark:text-white"
       >
         All Projects
       </h3>
@@ -250,7 +250,7 @@ function projectImageAlt(project: (typeof featured)[number]): string {
       <table class="w-full text-left text-sm">
         <thead>
           <tr
-            class="border-b border-gray-200 text-xs uppercase tracking-wider text-gray-500 dark:border-gray-700 dark:text-gray-400"
+            class="border-b border-gray-200 font-mono text-xs uppercase tracking-wider text-gray-500 dark:border-gray-700 dark:text-gray-400"
           >
             <th scope="col" class="py-3 pr-4 font-semibold">Project</th>
             <th scope="col" class="hidden py-3 pr-4 font-semibold sm:table-cell">
@@ -269,13 +269,13 @@ function projectImageAlt(project: (typeof featured)[number]): string {
                   <p class="font-semibold text-gray-900 dark:text-white">
                     {project.title}
                   </p>
-                  <p class="mt-0.5 line-clamp-1 text-xs text-gray-500 dark:text-gray-400">
+                  <p class="mt-0.5 line-clamp-1 font-mono text-xs text-gray-500 dark:text-gray-400">
                     {project.category}
                     {project.period && ` · ${project.period}`}
                   </p>
                 </td>
                 <td class="hidden py-3.5 pr-4 sm:table-cell">
-                  <span class="text-xs text-gray-500 dark:text-gray-400">
+                  <span class="font-mono text-xs text-gray-500 dark:text-gray-400">
                     {project.technologies.slice(0, 3).join(" · ")}
                   </span>
                 </td>

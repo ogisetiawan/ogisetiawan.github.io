@@ -10,6 +10,11 @@
 export default {
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Plus Jakarta Sans"', "Inter", "sans-serif"],
+        heading: ['"Plus Jakarta Sans"', "sans-serif"],
+        mono: ['"JetBrains Mono"', "monospace"],
+      },
       colors: {
         // Dark canvas (legacy dark.css)
         background: "#26262d",
