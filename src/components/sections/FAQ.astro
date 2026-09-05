@@ -54,11 +54,11 @@ const faqJsonLd = {
   <div class="mx-auto max-w-3xl space-y-3">
     {
       faqs.map((item) => (
-        <details class="group/faq rounded-xl border border-gray-200 bg-white open:shadow-sm dark:border-gray-800 dark:bg-gray-800/60">
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left text-sm font-semibold text-gray-900 transition-colors hover:text-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-inset [&::-webkit-details-marker]:hidden dark:text-white dark:hover:text-blue-400">
+        <details class="group/faq rounded-xl border border-gray-200 bg-elevated open:shadow-sm dark:border-gray-800 dark:bg-gray-800/60">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left text-sm font-semibold text-gray-900 transition-colors hover:text-accent-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-inset [&::-webkit-details-marker]:hidden dark:text-white dark:hover:text-accent-400">
             <span>{item.question}</span>
             <ChevronDown
-              class="h-5 w-5 shrink-0 text-blue-600 transition-transform duration-200 group-open/faq:rotate-180 dark:text-blue-400"
+              class="h-5 w-5 shrink-0 text-accent-600 transition-transform duration-200 group-open/faq:rotate-180 dark:text-accent-400"
               aria-hidden="true"
             />
           </summary>

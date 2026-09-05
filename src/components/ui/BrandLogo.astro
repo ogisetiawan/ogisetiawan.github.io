@@ -1,0 +1,36 @@
+---
+/**
+ * Brand mark: "oggi" text + accent dot.
+ * Text uses currentColor (white in dark mode); the dot stays accent green.
+ */
+interface Props {
+  class?: string;
+  /** Accessible name; prefer empty + aria-label on parent link */
+  title?: string;
+}
+
+const { class: className = "h-8 w-auto", title } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="141"
+  height="40"
+  viewBox="0 0 141 40"
+  fill="none"
+  class:list={["text-gray-900 dark:text-white", className]}
+  aria-hidden={title ? undefined : true}
+  role={title ? "img" : undefined}
+>
+  {title && <title>{title}</title>}
+  <text
+    x="2"
+    y="29"
+    font-family="Arial, Helvetica, sans-serif"
+    font-weight="bold"
+    font-size="50"
+    letter-spacing="-2"
+    fill="currentColor">oggi</text
+  >
+  <circle cx="112" cy="26.5" r="3.5" class="fill-accent" />
+</svg>

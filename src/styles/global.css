@@ -1,5 +1,41 @@
 @import "tailwindcss";
 
+/*
+ * Brand palette — Tailwind v4 (@theme).
+ * Canonical tokens also documented in /tailwind.config.mjs
+ */
+@theme {
+  /* Dark canvas */
+  --color-background: #26262d;
+  --color-surface: #31313a;
+  --color-border: #3e4148;
+
+  /* Light canvas — soft lime undertone (pairs with accent #a7d129) */
+  --color-page: #f4f5ef;
+  --color-elevated: #fafbf6;
+
+  /* Dark-mode aliases: gray-900 = page, gray-800 = elevated surface */
+  --color-gray-800: #31313a;
+  --color-gray-900: #26262d;
+
+  /* Soft light neutrals with sage cast */
+  --color-gray-50: #eef0e8;
+  --color-gray-100: #e4e6dc;
+
+  --color-accent: #a7d129;
+  --color-accent-50: #f4fbe6;
+  --color-accent-100: #e8f7c4;
+  --color-accent-200: #d4ef8f;
+  --color-accent-300: #c0e55c;
+  --color-accent-400: #b5dc3f;
+  --color-accent-500: #a7d129;
+  --color-accent-600: #8fb322;
+  --color-accent-700: #76961c;
+  --color-accent-800: #5c7516;
+  --color-accent-900: #455712;
+  --color-accent-950: #2a360a;
+}
+
 /* Enable class-based dark mode (Tailwind v4 syntax, replaces darkMode: 'class') */
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -37,12 +73,12 @@ html {
 /* Loading skeletons */
 .skeleton-block {
   border-radius: 0.375rem;
-  background-color: rgb(229 231 235);
+  background-color: #e4e6dc;
   background-image: linear-gradient(
     90deg,
-    rgb(229 231 235) 0%,
-    rgb(243 244 246) 40%,
-    rgb(229 231 235) 80%
+    #e4e6dc 0%,
+    #f4f5ef 40%,
+    #e4e6dc 80%
   );
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.4s ease infinite;
