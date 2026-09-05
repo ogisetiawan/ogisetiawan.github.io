@@ -1,0 +1,106 @@
+---
+/**
+ * Floating scroll-to-top — unique curved upward arrow.
+ * Appears after the user has scrolled past the first few sections.
+ */
+---
+
+<button
+  id="scroll-to-top"
+  type="button"
+  aria-label="Scroll back to top"
+  class="scroll-to-top group pointer-events-none fixed bottom-6 right-5 z-50 flex h-12 w-12 translate-y-3 items-center justify-center rounded-2xl border border-accent/40 bg-accent text-background opacity-0 shadow-lg shadow-accent/20 transition-[opacity,transform,box-shadow] duration-300 hover:bg-accent-600 hover:shadow-xl hover:shadow-accent/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 active:scale-95 sm:bottom-8 sm:right-8 dark:focus-visible:ring-offset-gray-900"
+>
+  <!-- Unique hand-drawn curved arrow pointing up -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 32 32"
+    fill="none"
+    aria-hidden="true"
+    class="h-6 w-6 transition-transform duration-300 group-hover:-translate-y-0.5"
+  >
+    <path
+      d="M16 26C14.5 18 12 12 16 6"
+      stroke="currentColor"
+      stroke-width="2.4"
+      stroke-linecap="round"
+    ></path>
+    <path
+      d="M10.5 11.5 16 5.5 21 12"
+      stroke="currentColor"
+      stroke-width="2.4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></path>
+    <path
+      d="M16 6c3.5 2 5 6 4 11"
+      stroke="currentColor"
+      stroke-width="2.4"
+      stroke-linecap="round"
+      opacity="0.45"
+    ></path>
+  </svg>
+</button>
+
+<style>
+  #scroll-to-top.is-visible {
+    pointer-events: auto;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #scroll-to-top,
+    #scroll-to-top svg {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById("scroll-to-top");
+  if (btn) {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    /** Show after roughly Hero + marquee + About (~2–3 sections). */
+    const showAfter = () => {
+      const about = document.getElementById("about");
+      if (about) {
+        const top = about.getBoundingClientRect().top + window.scrollY;
+        return window.scrollY > top + about.offsetHeight * 0.35;
+      }
+      return window.scrollY > window.innerHeight * 1.4;
+    };
+
+    let ticking = false;
+    const sync = () => {
+      btn.classList.toggle("is-visible", showAfter());
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(sync);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    sync();
+
+    btn.addEventListener("click", () => {
+      const home = document.getElementById("home");
+      if (reduceMotion) {
+        window.scrollTo(0, 0);
+        return;
+      }
+      if (home) {
+        home.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  }
+</script>
