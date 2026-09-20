@@ -7,7 +7,11 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://ogisetiawan.my.id',
   integrations: [
-    sitemap(),
+    // @astrojs/sitemap emits sitemap-index.xml + sitemap-0.xml (not /sitemap.xml).
+    // robots.txt must reference sitemap-index.xml — see public/robots.txt.
+    sitemap({
+      filter: (page) => !page.includes('/404'),
+    }),
   ],
   // Astro Fonts API (stable in Astro 7; formerly experimental.fonts)
   fonts: [

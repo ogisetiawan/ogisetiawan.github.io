@@ -2,6 +2,13 @@
   command = "npm run build"
   publish = "dist"
 
+# Legacy / mistaken GSC submissions often use /sitemap.xml; Astro emits sitemap-index.xml.
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 301
+  force = true
+
 # SEO / security trust signals (apply site-wide)
 [[headers]]
   for = "/*"
