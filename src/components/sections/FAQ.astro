@@ -1,37 +1,10 @@
 ---
 import { ChevronDown } from "@lucide/astro";
 import SectionHeading from "../ui/SectionHeading.astro";
+import { portfolioData as portfolio } from "../../data/portfolio";
 
-const faqs = [
-  {
-    question: "What is your primary tech stack?",
-    answerHtml:
-      "I specialize in modern frontend frameworks like <strong>Astro, React, and TypeScript</strong>, paired with robust backend technologies such as <strong>Node.js, PHP (CodeIgniter/Laravel), and MySQL</strong>. I also have deep expertise in enterprise integrations like SAP B1 and Bitrix24.",
-  },
-  {
-    question: "What kind of projects do you usually handle?",
-    answerHtml:
-      "I focus on <strong>enterprise web applications, business automation, and AI workflow integrations</strong>. My experience includes building scalable systems for regional markets, modernizing legacy infrastructure, and developing custom CRM solutions.",
-  },
-  {
-    question: "Are you available for freelance or full-time opportunities?",
-    answerHtml:
-      "Yes, I am currently open to new opportunities, particularly remote or hybrid roles involving complex system architecture, fullstack development, or AI automation projects. You can reach me via the contact form or WhatsApp.",
-  },
-] as const;
-
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answerHtml.replace(/<\/?strong>/g, ""),
-    },
-  })),
-};
+// FAQPage JSON-LD is emitted centrally in seo/JsonLd.astro from this same data.
+const faqs = portfolio.faqs;
 ---
 
 <section
@@ -43,7 +16,7 @@ const faqJsonLd = {
   <SectionHeading
     id="faq-heading"
     title="Frequently Asked Questions"
-    subtitle="Quick answers about my stack, project focus, and availability."
+    subtitle="Direct answers about Ogi Setiawan's stack, project focus, and availability."
   />
 
   <div class="mx-auto max-w-3xl space-y-3">
@@ -68,5 +41,3 @@ const faqJsonLd = {
     }
   </div>
 </section>
-
-<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />

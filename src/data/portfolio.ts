@@ -121,6 +121,13 @@ export interface Project {
   featured?: boolean;
 }
 
+/** FAQ — rendered in FAQ.astro, emitted as FAQPage schema in seo/JsonLd.astro */
+export interface FaqItem {
+  question: string;
+  /** May contain <strong> markup; strip tags before use in JSON-LD */
+  answerHtml: string;
+}
+
 /** Dummy testimonials — replace with real LinkedIn recommendations when available */
 export interface Testimonial {
   id: string;
@@ -141,6 +148,7 @@ export interface PortfolioData {
   education: EducationItem[];
   certifications: Certification[];
   skills: Skills;
+  faqs: FaqItem[];
   testimonials: Testimonial[];
   projects: Project[];
 }
@@ -526,6 +534,23 @@ export const portfolioData: PortfolioData = {
       { name: "English", level: "Professional" },
     ],
   },
+  faqs: [
+    {
+      question: "What is Ogi Setiawan's primary tech stack?",
+      answerHtml:
+        "<strong>Ogi Setiawan</strong> specializes in modern frontend frameworks like <strong>Astro, React, and TypeScript</strong>, paired with backend technologies such as <strong>Node.js, PHP (CodeIgniter/Laravel), and MySQL</strong>. Ogi Setiawan also has deep expertise in enterprise integrations like SAP B1 and Bitrix24.",
+    },
+    {
+      question: "What kind of projects does Ogi Setiawan usually handle?",
+      answerHtml:
+        "<strong>Ogi Setiawan</strong> focuses on <strong>enterprise web applications, business automation, and AI workflow integrations</strong>. His experience includes building scalable systems for regional markets, modernizing legacy infrastructure, and developing custom CRM solutions.",
+    },
+    {
+      question: "Is Ogi Setiawan available for freelance or full-time opportunities?",
+      answerHtml:
+        "Yes. <strong>Ogi Setiawan</strong> is currently open to new opportunities, particularly remote or hybrid roles involving complex system architecture, fullstack development, or AI automation projects. Contact Ogi Setiawan via the contact form or WhatsApp.",
+    },
+  ],
   // TODO: replace with real recommendations (e.g. from LinkedIn)
   testimonials: [
     {

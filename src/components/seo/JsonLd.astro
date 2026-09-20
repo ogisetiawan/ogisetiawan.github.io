@@ -1,72 +1,192 @@
 ---
 /**
- * GEO-oriented Knowledge Graph JSON-LD
- * Person ↔ WebSite ↔ WebPage via connected @id references
+ * GEO / SEO Knowledge Graph (JSON-LD) — single @graph, data sourced from
+ * src/data/portfolio.ts (no duplicated facts in this file).
+ *
+ * Nodes: Person (credentials, education, sameAs), WebSite, ProfilePage
+ * (+ speakable), BreadcrumbList, ItemList (projects), FAQPage.
  */
+import { portfolioData as portfolio } from "../../data/portfolio";
+
 const SITE = "https://ogisetiawan.my.id";
-const PERSON_ID = `${SITE}/#about`;
+const PERSON_ID = `${SITE}/#person`;
 const WEBSITE_ID = `${SITE}/#website`;
-const WEBPAGE_ID = `${SITE}/`;
+const WEBPAGE_ID = `${SITE}/#webpage`;
+const BREADCRUMB_ID = `${SITE}/#breadcrumb`;
+const PROJECTS_ID = `${SITE}/#projects-list`;
+const FAQ_ID = `${SITE}/#faq-page`;
+
+const displayName = portfolio.profile.name.replace(/^I'm\s+/i, "").trim();
+const currentJob = portfolio.experience.find((e) => e.current);
+
+/** Identity links from portfolio.social — LinkedIn, GitHub, Twitter, Stack Overflow, DEV */
+const sameAs = portfolio.social.map((s) => s.url);
+
+/** Topics + concrete technologies (Expert/Proficient) from portfolio.skills */
+const knowsAbout = [
+  "Web Development",
+  "Enterprise Systems",
+  "AI Automation",
+  "SAP Integration",
+  ...portfolio.skills.programming
+    .filter((s) => s.level === "Expert" || s.level === "Proficient")
+    .map((s) => s.name),
+  ...portfolio.skills.hardSkills.map((s) => s.name),
+];
+
+/** Certifications → EducationalOccupationalCredential */
+const credentials = portfolio.certifications.map((cert) => ({
+  "@type": "EducationalOccupationalCredential" as const,
+  name: cert.name,
+  credentialCategory: "certificate",
+  recognizedBy: { "@type": "Organization" as const, name: cert.issuer },
+  ...(cert.certificate ? { url: cert.certificate } : {}),
+  ...(cert.coursework ? { description: cert.coursework.trim() } : {}),
+}));
+
+/** Education → alumniOf */
+const alumniOf = portfolio.education.map((edu) => ({
+  "@type": "CollegeOrUniversity" as const,
+  name: edu.institution,
+}));
+
+const person = {
+  "@type": "Person" as const,
+  "@id": PERSON_ID,
+  name: displayName,
+  url: SITE,
+  image: {
+    "@type": "ImageObject" as const,
+    url: `${SITE}/og-image.png`,
+    contentUrl: `${SITE}/og-image.png`,
+    width: 1200,
+    height: 630,
+  },
+  jobTitle: portfolio.profile.title,
+  description:
+    "Fullstack Developer specializing in enterprise web applications, AI workflow automation, and legacy system modernization.",
+  email: `mailto:${portfolio.contact.email}`,
+  ...(currentJob
+    ? {
+        worksFor: {
+          "@type": "Organization" as const,
+          name: currentJob.company,
+        },
+      }
+    : {}),
+  address: {
+    "@type": "PostalAddress" as const,
+    addressLocality: "South Tangerang",
+    addressRegion: "Banten",
+    addressCountry: "ID",
+  },
+  alumniOf,
+  hasCredential: credentials,
+  sameAs,
+  knowsAbout,
+};
+
+/** Single-page anchors (mirrors Header nav) → BreadcrumbList */
+const breadcrumbSections = [
+  { name: "Home", anchor: "" },
+  { name: "About", anchor: "#about" },
+  { name: "Projects", anchor: "#projects" },
+  { name: "Experience", anchor: "#experience" },
+  { name: "FAQ", anchor: "#faq" },
+  { name: "Contact", anchor: "#contact" },
+];
+
+const breadcrumb = {
+  "@type": "BreadcrumbList" as const,
+  "@id": BREADCRUMB_ID,
+  itemListElement: breadcrumbSections.map((s, i) => ({
+    "@type": "ListItem" as const,
+    position: i + 1,
+    name: s.name,
+    item: `${SITE}/${s.anchor}`,
+  })),
+};
+
+/** Projects → ItemList of CreativeWork (name, short description, tech keywords) */
+const isLiveUrl = (url: string | null): url is string =>
+  !!url && url !== "null" && url.startsWith("http");
+
+const firstSentence = (text: string) => {
+  const match = text.match(/^.*?[.!?](?=\s|$)/);
+  return match ? match[0] : text;
+};
+
+const projectsList = {
+  "@type": "ItemList" as const,
+  "@id": PROJECTS_ID,
+  name: `Projects by ${displayName}`,
+  url: `${SITE}/#projects`,
+  numberOfItems: portfolio.projects.length,
+  itemListElement: portfolio.projects.map((p, i) => ({
+    "@type": "ListItem" as const,
+    position: i + 1,
+    item: {
+      "@type": "CreativeWork" as const,
+      name: p.title,
+      description: firstSentence(p.description),
+      keywords: p.technologies.join(", "),
+      ...(isLiveUrl(p.url) ? { url: p.url } : {}),
+      creator: { "@id": PERSON_ID },
+    },
+  })),
+};
+
+/** FAQ (portfolio.faqs, shared with sections/FAQ.astro) → FAQPage */
+const stripTags = (html: string) => html.replace(/<[^>]*>/g, "");
+
+const faqPage = {
+  "@type": "FAQPage" as const,
+  "@id": FAQ_ID,
+  url: `${SITE}/#faq`,
+  isPartOf: { "@id": WEBSITE_ID },
+  mainEntity: portfolio.faqs.map((item) => ({
+    "@type": "Question" as const,
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer" as const,
+      text: stripTags(item.answerHtml),
+    },
+  })),
+};
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Person",
-      "@id": PERSON_ID,
-      name: "Ogi Setiawan",
-      jobTitle: "Full Stack Software Engineer",
-      description:
-        "Fullstack Developer specializing in enterprise web applications, AI workflow automation, and legacy system modernization.",
-      url: SITE,
-      image: `${SITE}/og-image.png`,
-      worksFor: {
-        "@type": "Organization",
-        name: "Behn Meyer Group",
-      },
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "South Tangerang",
-        addressRegion: "Banten",
-        addressCountry: "ID",
-      },
-      sameAs: [
-        "https://www.linkedin.com/in/ogi-setiawan-software-engineer/",
-        "https://github.com/ogisetiawan",
-        "https://dev.to/ogisetiawan",
-      ],
-      knowsAbout: [
-        "Web Development",
-        "Enterprise Systems",
-        "AI Automation",
-        "React",
-        "Node.js",
-        "PHP",
-        "SAP Integration",
-        "Astro",
-        "TypeScript",
-      ],
-    },
+    person,
     {
       "@type": "WebSite",
       "@id": WEBSITE_ID,
       url: SITE,
-      name: "Ogi Setiawan Portfolio",
-      description:
-        "The official portfolio of Ogi Setiawan, showcasing enterprise web projects and technical expertise.",
+      name: `${displayName} Portfolio`,
+      description: `The official portfolio of ${displayName}, showcasing enterprise web projects and technical expertise.`,
       publisher: { "@id": PERSON_ID },
-      inLanguage: "id-ID",
+      about: { "@id": PERSON_ID },
+      inLanguage: "en-US",
     },
     {
-      "@type": "WebPage",
+      "@type": "ProfilePage",
       "@id": WEBPAGE_ID,
       url: SITE,
-      name: "Ogi Setiawan - Regional Web Developer & Fullstack Engineer",
+      name: `${displayName} - Regional Web Developer & Fullstack Engineer`,
       isPartOf: { "@id": WEBSITE_ID },
       about: { "@id": PERSON_ID },
+      mainEntity: person,
+      breadcrumb: { "@id": BREADCRUMB_ID },
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: ["h1", "#about", "#faq"],
+      },
       datePublished: "2026-08-01",
-      dateModified: "2026-09-04",
+      dateModified: "2026-09-20",
     },
+    breadcrumb,
+    projectsList,
+    faqPage,
   ],
 };
 

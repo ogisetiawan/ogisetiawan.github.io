@@ -4,6 +4,7 @@ Allow: /
 # Explicit allow for AI / search-citation crawlers
 User-agent: GPTBot
 Allow: /
+Crawl-delay: 0
 
 User-agent: ChatGPT-User
 Allow: /
@@ -36,6 +37,15 @@ User-agent: CCBot
 Allow: /
 
 User-agent: meta-externalagent
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
 Allow: /
 
 Sitemap: https://ogisetiawan.my.id/sitemap-index.xml
