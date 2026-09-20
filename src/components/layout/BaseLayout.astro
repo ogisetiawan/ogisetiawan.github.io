@@ -14,6 +14,9 @@ interface Props {
   imageWidth?: number;
   imageHeight?: number;
   imageType?: string;
+  /** Original source URL for syndicated content (e.g. dev.to article) — used for <link rel="canonical"> */
+  canonicalUrl?: string;
+  ogType?: "website" | "article";
   noindex?: boolean;
 }
 
@@ -44,14 +47,19 @@ const {
   title = defaultTitle,
   description = defaultDescription,
   image = "/og-image.png",
-  imageWidth = 612,
-  imageHeight = 408,
+  imageWidth = 1200,
+  imageHeight = 630,
   imageType = "image/png",
+  canonicalUrl,
+  ogType = "website",
   noindex = false,
 } = Astro.props;
 
 const siteOrigin = Astro.site ?? new URL(Astro.url.origin);
-const canonicalURL = new URL(Astro.url.pathname, siteOrigin);
+/** This page's own URL — used for og:url / twitter:url (share previews) */
+const pageURL = new URL(Astro.url.pathname, siteOrigin);
+/** Canonical may point to the original source when content is syndicated */
+const canonicalURL = canonicalUrl ?? pageURL;
 const ogImage = new URL(image, siteOrigin);
 const robots = noindex ? "noindex, nofollow" : "index, follow";
 ---
@@ -81,8 +89,8 @@ const robots = noindex ? "noindex, nofollow" : "index, follow";
     <meta name="keywords" content={keywords} />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageURL} />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
@@ -99,14 +107,16 @@ const robots = noindex ? "noindex, nofollow" : "index, follow";
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content={twitterHandle} />
     <meta name="twitter:creator" content={twitterHandle} />
-    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:url" content={pageURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={`${displayName} — ${portfolio.profile.title}`} />
 
     {
-      !noindex && <JsonLd />
+      /* Profile knowledge graph (Person/ProfilePage/FAQPage…) belongs to the homepage only;
+         other pages (e.g. /blog/…) emit their own page-specific JSON-LD. */
+      !noindex && Astro.url.pathname === "/" && <JsonLd />
     }
 
     <!-- Astro Fonts API — preload above-the-fold (Hero Fraunces + body) -->

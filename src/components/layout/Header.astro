@@ -3,16 +3,28 @@ import { Sun, Moon, Menu, X } from "@lucide/astro";
 import { portfolioData as portfolio } from "../../data/portfolio";
 import BrandLogo from "../ui/BrandLogo.astro";
 
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Certifications", href: "#certifications" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+const isHome =
+  Astro.url.pathname === "/" || Astro.url.pathname === "";
+
+/** Hash sections — absolute `/#…` off the homepage so nav works from /blog. */
+const sectionLinks = [
+  { label: "Home", hash: "#home" },
+  { label: "About", hash: "#about" },
+  { label: "Projects", hash: "#projects" },
+  { label: "Experience", hash: "#experience" },
+  { label: "Certifications", hash: "#certifications" },
+  { label: "Blog", hash: "#blog" },
+  { label: "Testimonials", hash: "#testimonials" },
+  { label: "FAQ", hash: "#faq" },
+  { label: "Contact", hash: "#contact" },
 ];
+
+const navLinks = sectionLinks.map((link) => ({
+  label: link.label,
+  href: isHome ? link.hash : `/${link.hash}`,
+}));
+
+const homeHref = isHome ? "#home" : "/";
 ---
 
 <header
@@ -24,7 +36,7 @@ const navLinks = [
   >
     <!-- Brand (left) -->
     <a
-      href="#home"
+      href={homeHref}
       class="relative z-10 transition-opacity duration-300 hover:opacity-80"
       aria-label={`${portfolio.profile.name} - Home`}
     >

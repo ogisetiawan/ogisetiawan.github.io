@@ -1,0 +1,99 @@
+---
+/**
+ * /blog — index of articles syndicated from DEV.to (SSG at build time).
+ */
+import BaseLayout from "../../components/layout/BaseLayout.astro";
+import BlogCard from "../../components/ui/BlogCard.astro";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+import { ArrowLeft, ExternalLink } from "@lucide/astro";
+import { portfolioData as portfolio } from "../../data/portfolio";
+import {
+  DEVTO_USERNAME,
+  fetchDevtoArticles,
+} from "../../lib/devto";
+
+const articles = await fetchDevtoArticles();
+const displayName = portfolio.profile.name.replace(/^I'm\s+/i, "").trim();
+
+const SITE = "https://ogisetiawan.my.id";
+const pageUrl = `${SITE}/blog/`;
+
+const blogJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: `${displayName} Blog`,
+  description: `Articles by ${displayName} on web development, tools, and workflow — also published on DEV Community.`,
+  url: pageUrl,
+  author: {
+    "@type": "Person",
+    "@id": `${SITE}/#person`,
+    name: displayName,
+    url: SITE,
+  },
+  blogPost: articles.map((a) => ({
+    "@type": "BlogPosting",
+    headline: a.title,
+    description: a.description,
+    url: `${SITE}/blog/${a.slug}/`,
+    datePublished: a.published_at,
+    image: a.social_image,
+  })),
+};
+---
+
+<BaseLayout
+  title={`Blog — ${displayName}`}
+  description={`Articles by ${displayName} on web development, tools, and workflow. Originally published on DEV Community.`}
+>
+  <main
+    class="bg-page px-4 py-16 text-gray-900 transition-colors duration-300 sm:px-6 lg:px-8 dark:bg-gray-900 dark:text-gray-100"
+  >
+    <div class="mx-auto max-w-6xl">
+      <a
+        href="/#blog"
+        class="inline-flex items-center gap-2 text-sm font-semibold text-gray-600 transition-colors hover:text-accent-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 dark:text-gray-400 dark:hover:text-accent-400"
+      >
+        <ArrowLeft class="h-4 w-4" aria-hidden="true" />
+        Back to home
+      </a>
+
+      <div class="mt-8" data-reveal>
+        <SectionHeading
+          id="blog-index-heading"
+          title="Blog"
+          subtitle="Articles on development, tools, and workflow — also published on DEV Community."
+          align="start"
+          class="mb-10 text-left"
+        />
+
+        {
+          articles.length === 0 ? (
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              No articles yet. Check back soon.
+            </p>
+          ) : (
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {articles.map((article, i) => (
+                <BlogCard article={article} stagger={i} />
+              ))}
+            </div>
+          )
+        }
+
+        <p class="mt-10">
+          <a
+            href={`https://dev.to/${DEVTO_USERNAME}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-sm font-semibold text-accent-700 transition-colors hover:text-accent-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 dark:text-accent-400 dark:hover:text-accent-300"
+          >
+            More on DEV.to/{DEVTO_USERNAME}
+            <ExternalLink class="h-4 w-4" aria-hidden="true" />
+          </a>
+        </p>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(blogJsonLd)} />

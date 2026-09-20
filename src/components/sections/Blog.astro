@@ -1,0 +1,54 @@
+---
+import { ArrowRight, ExternalLink } from "@lucide/astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import BlogCard from "../ui/BlogCard.astro";
+import { DEVTO_USERNAME, fetchDevtoArticles } from "../../lib/devto";
+
+const articles = await fetchDevtoArticles();
+---
+
+<section
+  id="blog"
+  class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8"
+  aria-labelledby="blog-heading"
+  data-reveal
+>
+  <SectionHeading
+    id="blog-heading"
+    title="Blog"
+    subtitle="Articles on development, tools, and workflow — also published on DEV Community."
+  />
+
+  {
+    articles.length === 0 ? (
+      <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+        No articles yet. Check back soon.
+      </p>
+    ) : (
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {articles.map((article, i) => (
+          <BlogCard article={article} stagger={i} />
+        ))}
+      </div>
+    )
+  }
+
+  <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+    <a
+      href="/blog/"
+      class="inline-flex items-center gap-2 rounded-xl bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:focus-visible:ring-white dark:focus-visible:ring-offset-gray-900"
+    >
+      View all posts
+      <ArrowRight class="h-4 w-4" aria-hidden="true" />
+    </a>
+    <a
+      href={`https://dev.to/${DEVTO_USERNAME}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 text-sm font-semibold text-gray-600 transition-colors hover:text-accent-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 dark:text-gray-400 dark:hover:text-accent-400"
+    >
+      Follow on DEV.to
+      <ExternalLink class="h-4 w-4" aria-hidden="true" />
+    </a>
+  </div>
+</section>
